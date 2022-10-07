@@ -1,0 +1,742 @@
+\documentclass[11pt,a4paper]{colorart}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{latexsym}
+\usepackage{amsfonts,amssymb}
+\usepackage{psfrag}
+\usepackage{ulem}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage{import, pdfpages, transparent}
+\usepackage{caption, subcaption}
+\usepackage[section]{placeins}
+\usepackage{hyperref}
+
+\def\nn{\nonumber} 
+\def\pa{{\partial}}
+\def\f{\frac}
+\def\l{\left}
+\def\r{\right}
+\def\d{{\rm d}}
+\def\es{\emptyset}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+\def\N{\mathbb{N}}
+\def\Z{\mathbb{Z}}
+\def\Q{\mathbb{Q}}
+\def\e{\epsilon}
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\p{\phi}
+\def\Ker{\text{Ker}}
+\def\Con{\text{Con}}
+
+\title{\huge Linear Algebra}
+\author{Incalculas}
+\date{Updated on: \today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Vector Space}
+
+\subsection{What is a Vector Space?}
+
+Vector space is a set with a binary operation
+	\[ +: V \times V \rightarrow V \]
+
+Key properties of a vector space:
+
+\begin{itemize}
+	\item \textit{i) Commutativity}
+			\[A + B = B + A \]
+	\item \textit{ii) Associativity}
+			\[ A + \l(B + C\r) = \l(A + B \r) + C\]
+	\item \textit{iii) Identity}
+		\[ \exists 0 \in V \]
+		\[ \text{ s.t } v + 0 = v, \forall v \in V \]
+	\item \textit{iv) Inverse}
+		\[ \forall v \in V, \exists v` \in V \]
+		\[ \text{s.t } v + v` = 0 \]
+\end{itemize}
+
+A set of scalars associated with a vector space is a Field \\
+
+\subsection{Definition of Fields}
+
+\begin{definition}[Fields]
+	\[ \l(F, +, \cdot\r) \]
+	\begin{itemize}
+		\item $\l(F, +\r)$ Satifies i) to iv) [an abelian group]
+		\item $\l(F -\{0\} , \cdot\r)$ Satifies i) to iv) [an abelian group]
+		\item $\cdot$ is distributive over $+$
+	\end{itemize}
+\end{definition}
+
+\begin{example}[Binary field]
+	\[ \{0,1\} \]
+	Addition:
+	\[ 0 + 1 = 1 = 1 + 0 \]
+	\[ 1 + 1 = 0 \]
+	Multiplication:
+	\[ 1 \cdot 0 = 0 = 0 \cdot 1\]
+	\[ 1 \cdot 1 = 1 \]
+	\[ 0 \cdot 0 = 0 \]
+\end{example}
+
+What a field does to a vector in a vector space:
+
+$\g, \mu \in F$, $v, w \in V$
+
+\[ \g \cdot \l( v + w \r) = \l( \g v + \g w \r) \]
+
+\[ \l( \g + \mu \r) v = \g v + \mu v \]
+
+\[ \mu \l( \g \cdot v \r) = \l( \mu \g \r) v \]
+
+Properties of a vector space $V$ over field $F$:
+
+$u, v, w \in V$ and $a, b \in F$
+
+\begin{enumerate}
+	\item $ u + v = w = v + u $
+	\item $ u + \l(v + w\r) = \l(u + v \r) + w$
+	\item $ \exists 0 \in V, \text{s.t } 0 + v = v $
+	\item $ \exists v` \in V, \text{s.t } v + v` = 0 $
+	\item $ \exists 1 \in F, \text{s.t } 1 \cdot v = v $
+	\item $ \l(ab\r) \cdot v = a\cdot \l(bv\r) $
+	\item $ a \cdot \l( v+w\r) = a \cdot v + a \cdot w $
+	\item $ \l(a+b\r) \cdot v = a\cdot v + b \cdot v $
+\end{enumerate}
+
+\begin{example}
+	set $V = \{0\}$ over the field $\R$
+\end{example}
+
+\begin{example}
+	set $\R, \R^2, \R^3 \dots \R^n$ over the field $\R$
+\end{example}
+
+\begin{remark}
+	If $F$ is a field, then $F$ is also a Vector space over itself
+\end{remark}
+
+\subsection{Definition of Vector Spaces}
+
+\begin{definition}[Vector Space]
+	\[ \l(V,F,+,\cdot\r) \]
+	\begin{itemize}
+		\item $\l(V,+\r)$ is an Abelian group
+		\item $ \cdot : F \times V \rightarrow V $ is associative and follows distributivity
+	\end{itemize}
+\end{definition}
+
+\begin{example}
+	\[ \Q, \R, \C \text{ are all fields}\]
+\end{example}
+
+\begin{proposition}
+	Any field $ F\subset \R$ contains $\Q$
+\end{proposition}
+
+\begin{proof}
+	We assume normal addition and multiplication
+	\[ \forall a \in \Q, a = \frac{p}{q} \]
+	where $p,q \in \Z$\\
+	$0,1 \in F$, as $\l(F, +\r)$ and $\l(F-\{0\}, \times\r)$ is an abelian groups. 
+	As $+$ is closed $1+1 = 2 \in F$ and $2+1=3 \in F$ and so on. 
+	By inverse property of $+$, we know $-1,-2,-3 \dots\in F$, therefore $\Z\in F$. 
+	By inverse property of $\times$, we know $\{1/a: a\in\Z\}\in F$.
+	Since $\times$ is closed, $S=\{a/b: a,b \in\Z\}\in F$, set $S$ is just $\Z$. Therefore $Z\in F$ if $F \subset\R$ is a field.
+	
+\end{proof}
+
+Properties of fields:
+
+\begin{enumerate}
+	\item \textit{Cancellation law,}
+		If $a+b = a+c$ then $b=c$
+	\item Additive identity is unique
+	\item Additive inverse is unique
+	\item Multiplicative identiy is unique
+	\item Multiplicative inverse is unique
+	\item 
+		if $a\cdot b = a \cdot c$ then $b=c$ if $a \neq 0$
+\end{enumerate}
+
+Properties of Vector spaces:
+
+\begin{enumerate}
+	\item \textit{Cancellation law,}
+		If $a+b = a+c$ then $b=c$
+	\item Additive identity is unique
+	\item Additive inverse is unique
+	\item $0\cdot v = 0\rightarrow$ is the null vector
+\end{enumerate}
+
+Matrices as Vector spaces:
+
+\[ M_{n\times m}\l(\R\r) \]
+
+\begin{itemize}
+	\item Addition is entry wise
+	\item $0_{n\times m}$ the additive identity
+	\item Scaling is entry wise
+\end{itemize}
+
+$M_{n\times m}$ looks like $\R^{n.m}$
+
+\subsection{Vector Subspaces:}
+
+\begin{definition}[Vector Subspace]
+	$W$ is said to be a vector subspace of $V$ if 
+	\begin{itemize}
+		\item $ W \subseteq V$
+		\item $W$ is a vector subspace
+	\end{itemize}
+\end{definition}
+
+\begin{example}
+	$P\l(\R\r)$ is the set of all polynomials.\\
+	$P_n\l(\R\r)$ is the set of all polynominals of degree at most n.
+	\begin{itemize}
+		\item $ P_0\l(\R\r) \subset P_1\l(\R\r) \subset P_1\l(\R\r) \subset P_3\l(\R\r) \subset \dots P_n\l(\R\r) $
+		\item $\{a_0 + a_2 x^2 + a_4 x^4 \dots : a_i \in \R\} $
+	\end{itemize}
+\end{example}
+
+\begin{example}
+	$M_n\l(\R\r)$ is the set of all $n\times n$ matrices \\
+	\begin{itemize}
+		\item Set of all symmetric matrices, $ S = \{ A : A \in M_n\l(\R\r), A = A^t \} $
+		\item $ T = \{ A : A \in M_n\l(\R\r), Tr\l(A\r)=0\} $
+	\end{itemize}
+\end{example}
+
+\section{Span and Linear Independence}
+
+\subsection{Definiton of Span}
+
+\begin{definition}[Span]
+	\[ \text{span}\l(S\r) = \{ \g_1 v_1 + \g_2 v_2 \dots \g_k v_k : v_i\in S, \g_i \in F \} \]
+\end{definition}
+
+\begin{example}
+	\[ S = \{1,x,x^2\} \]
+	\[ \text{span}\l(S\r) = P_2\l(\R\r) \]
+\end{example}
+
+\begin{example}
+	\[ S = \{\l(1,0,0\r),\l(0,1,0\r),\l(0,0,1\r)\} \]
+	\[ \text{span}\l(S\r) = \R^2 \]
+\end{example}
+
+\begin{example}
+	\[ S = \{ \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix},
+		  \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix},
+		  \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}	\} \]
+	\[ \text{span}\l(S\r) = M_2\l(\R\r)_{sym} \]
+\end{example}
+
+Properties of Span:
+
+\begin{enumerate}
+	\item span$\l(S\r)$ is always a subspace containing $S$ as,\\
+		$+$ is closed and\\
+		Scaling operation is also closed.
+	\item For a subspace $S\subseteq W$, $S\subseteq \text{span}\l(S\r) \subseteq W$
+	\item $\text{span}\l(S\r)$ is the smallest subspace containg S.\\
+	      That is, $\text{span}\l(S\r)$ is the intersection of all subspaces containing $S$.
+        \item $\text{span}\l(\es\r) = \{ 0\}$\\
+	      This is more of a convention, or you can arrive at this by following the above definition of Span.
+      \item $S_1 \subseteq S_2$ implies $\text{span}\l(S_1\r) \subseteq \text{span}\l(S_2\r)$
+      \item $\text{span}\l(\text{span}\l(S\r)\r) = \text{span}\l(S\r) $ 
+      \item $\text{span}\l(W\r) = W$ if and only if $W$ is a subspace.
+      \item $\text{span}\l(S_1\cup S_2\r) = \text{span}\l(S_1\r) +\text{span}\l(S_2\r)$\\
+	      where $A+B=\{a+b:a\in A,b\in B\}$
+\end{enumerate}
+
+\begin{remark}
+	if $V_1$ and $V_2$ are subspaces then, $V_1+V_2$ is also a subspace.
+\end{remark}
+
+\subsection{Linear (In)dependence}
+
+Given a non empty set $S$, consider $\text{span}\l(S\r)$. Is there an element $v\in S$ such that, $\text{span}\l(S\r) = \text{span}\l(S-\{v\}\r)$?\\
+
+Then $S$ is linearly dependent.
+
+\begin{example}
+	\[ S = \{\l(0,0,0\r),\l(0,1,0\r),\l(0,0,e\r)\} \]
+	\[ \text{span}\l(S\r) = \{\l(0,a,b\r): a,b\in\R\} = \text{span}\l(S-\{\l(0,0,0\r)\}\r)\]
+\end{example}
+
+For $\text{span}\l(S\r) = \text{span}\l(S-\{v\}\r)$, there exists $v_1,v_2, \dots,v_k \in S -\{v\}$ and scalars $\g_1,\g_2,\dots,\g_k \in F$ such that,
+
+\[ V = \sum_{i=1}^k \g_i v_i \]
+
+as $0\notin S$, not all $\g_i$ can be $0$.
+
+\begin{definition}[Linear Dependence]
+	A subset $S\subseteq V$ is said to be linearly dependent if there exists scalars, $\g_1,\g_2,\dots\g_k\in F$ such that for $v_1,v_2,\dots,v_k\in S$
+	\[\g_1 v_1 + \g_2 v_2 + \dots + \g_k v_k = 0 \]
+
+	Where not all $\g_i = 0$ and $v_i$ are all distinct.
+\end{definition}
+
+\begin{definition}[Linear Independence]
+	A subset $S\subseteq V$ is said to be linearly independent if there exists no scalars, $\g_1,\g_2,\dots\g_k\in F$ such that for $v_1,v_2,\dots,v_k\in S$
+	\[\g_1 v_1 + \g_2 v_2 + \dots + \g_k v_k = 0 \]
+
+	Where not all $\g_i = 0$ and $v_i$ are all distinct.
+\end{definition}
+
+\begin{example}
+	$V = P\l(\R\r) $, $S=\{1+x,1-x,x^2,2x^2-1\}$
+	\[ \frac{1}{2} \l(1+x\r) + \frac{1}{2}\l(1-x\r) + \l(2x^2-1\r) + \l(-2\r)x^2 = 0 \]
+	$S` =\{1+x,1-x,x^2\}$
+\end{example}
+
+\begin{remark}
+	if $S$ is linearly dependent, then $\exists v\in S$ such that $\text{span}\l(S\r) = \text{span}\l(S-\{v\}\r)$ 
+\end{remark}
+
+\begin{proposition}
+	if $S$ is linearly independent and $\exists v \notin \text{span}\l(S\r)$ then $S\cup\{v\}$ is linearly independent.
+\end{proposition}
+
+\begin{proof}
+	let $\g,\g_1,\dots,\g_k \in F$ and $v_1,\dots,v_k \in S$
+	\[ \g_1 v1 + \dots + \g_k v_k + \g v = 0\]
+	case 1: $\g = 0$,
+	\[ \g_1 v1 + \dots + \g_k v_k  = 0\]
+	as $S$ is linearly independent $\g_i = 0$ therefore,
+	\[ \g_1,\g_2,\dots,\g_k,\g = 0 \]
+	therefore $S\cup\{v\}$ is linearly independent.\\
+	case 2: $\g \neq 0$,
+	\[ v = \frac{-\g_1}{\g} v_1 + \dots + \frac{-\g_k}{\g}v_k \]
+	but $v\notin \text{span}\l(S\r)$, therefore this case is not possible.
+\end{proof}
+
+\section{Basis and Dimension of a vector space}
+
+\subsection{Basis and Dimension}
+
+\begin{definition}[Basis]
+	set $\b\subseteq V$ is called the basis of $V$ if
+	\begin{enumerate}
+		\item $\b$ is linearly independent.
+		\item $\b$ spans $V$
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[Dimension]
+	For $\b$ being a basis of $V$, $\text{dim}_FV = |\b|$
+\end{definition}
+
+\subsection{Replacement Theorem}
+
+\begin{theorem}[Replacement Theorem]
+	    Let $S\subseteq V$ be a finite set which spans $V$ and let $L\subseteq V$  be a finite linearly independent subset, then,
+	    \begin{enumerate}
+		    \item $|L| \leq |S|$
+		    \item $\exists T \subseteq S$ (T is of size $|S|-|L|$) such that $T\cup L$ spans V
+	    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\[ L = \{ u_1,\dots,u_m\} \]
+	\[ S = \{ v_1,\dots,v_n\} \]
+	\[ u_m \in V = \text{span}\l(S\r) \]
+	therefore,
+	\[ u_m = a_1 v_1 + \dots + a_n v_n \]
+	as $u_m$ is in $L$ a linearly independent set, $u_m$ cannot be $0$, therefore, all of $a_i$ cannot be zero as well. Let $a_n \neq 0$.
+	\[ v_n = \frac{1}{a_n}u_m +\frac{-a_1}{a_n}v_1 +\dots + \frac{-a_{n-1}}{a_n}v_{n-1} \]
+	\[ v_n \in \text{span}\{v_1,\dots,v_{n-1},u_m \} = \text{span}\l(S\r) = V \]
+	similarly,
+	\[ u_{m-1} \in V = \text{span}\{v_1,\dots,v_{n-1},u_m \}  \]
+	therefore,
+	\[ u_{m-1} = a_1 v_1 + \dots + a_{n-1} v_{n-1} + b_m u_m  \]
+	as $u_{m-1}$ and $u_m$ are linearly independent, therefore all of $a_i$ cannot be $0$
+	\[ v_{n-1} = \frac{1}{a_{n-1}}u_{m-1} +\frac{-b_m}{a_{n-1}}u_m + \frac{-a_1}{a_{n-1}} v_1 \dots + \frac{-a_{n-2}}{a_{n-1}}v_{n-2} \]
+	\[ v_{n-1} \in \text{span}\{v_1,\dots,v_{n-1},u_{m-1},u_m \} = \text{span}\l(S\r) = V \]
+	Now iterate this process to get,
+	\[ S` = \{ v_1,\dots,v_{n-m},u_1,\dots,u_m \} \]
+	Where $S`$ spans $V$,
+	\[ \text{span}\l(S`\r) = V \]
+	If $n<m$ then, there will be a point when iterating the steps where a proper subset of L will span V, which would not be possible since this breaks the linear independence of L.\\
+	The set $T$ from the theorem is,
+	\[ T = S` - L \]
+\end{proof}
+
+\begin{remark}
+	If $S\subseteq V$ spans $V$ and $L\subseteq V$ is an linearly independent subset, then $|L|\leq |S|$.
+\end{remark}
+
+\begin{corollary}
+	Given 2 basis of the same vector space $V$, $\b$ and $\b`$.
+	\[ |\b|=|\b`|\]
+\end{corollary}
+
+\begin{proof}
+	Set $S = \b$ and $L = \b`$. $\b$ spans $V$ by definition of basis and $\b`$ is linearly independent by definition of basis.\\
+	Now according to 1) of replacement theorem, we get.
+	\[ |\b| \leq |\b`| \]
+	Similarly, we can swap $S$ and $L$ to get,
+	\[ |\b| \geq |\b`| \]
+	\[ \therefore |\b| = |\b`| \]
+\end{proof}
+
+\begin{remark}
+	Going back to the definition of dimension, we can see that basis need not be unique but the dimension of a vector space is unique regardless of which basis we use to find the dimension
+\end{remark}
+
+\begin{corollary}
+	Let $V$ be a vector space of finite dimension $n$, then
+	\begin{enumerate}
+		\item Any finite spanning set $S$, $|S|\geq n$, if $|S|=n$ then $S$ is a basis.
+		\item Any linearly independent set $L$, $|L|\leq n$, if $|L|=n$, then $L$ spans $V$.
+		\item Any linearly independent set $L$ can be extended to form a basis of $V$.
+	\end{enumerate}
+\end{corollary}
+
+\begin{corollary}
+	Let $V$ be a finite dimensional vector space over the field $F$ andlet $W\subseteq V$ be a subspace, then,
+	\[ \text{dim}_F\l(W\r) \leq \text{dim}_F \l(V\r) \]
+	If equality holds, then, $V=W$.
+\end{corollary}
+
+\begin{proof}
+	Let $\b$ be a basis of $V$ of size $n$. Now look at span$\{\es\} = \{0\}$, if it is $W$ then we are done, if not, we choose $u_1\in W$ which is non zero, $L_1 = \{u_1\}\subseteq W$ is linearly independent. We check again if $\text{span}\l(L_1\r)=W $, if it is then we are donem, if it isn't then we choose $u_2\in W \setminus \text{span}\l(L_1\r)$. We iterate this process until we get $\b_\circ = \{u_1,\dots,u_k\}$ which spans $W$. This set is linearly independent by construction (refer to proposition 2.11). Using 1) from replacement theorem, using $\b$ as S and $\b_circ$ as L, we get,
+	\[ |\b_\circ| \leq |\b| \]
+	which is the same as,
+	\[ \text{dim}_F\l(W\r) \leq \text{dim}_F \l(V\r) \]
+	And using corollary 3.8 we can say that the equality implies $V=W$.	
+\end{proof}
+
+\begin{remark}
+	Given subspace $W$ of vector space $V$, with $\b_\circ$ as the basis of $W$, we can extend the basis $\b_\circ$ to $\b$ as a basis for $V$
+\end{remark}
+
+\subsection{Direct Sum}
+
+Let $W_1$ and $W_2$ be subspaces of a finite dimensional vector space $V$. Then $W_1+W_2$ is also a subspace.
+
+Case A: $W_1 \cap W_2 = \{0\}$\\
+
+\begin{definition}[Direct Sum]
+	Given subspaces $W_1$ and $W_2$ of a finite dimensional vector space $V$, if $W_1 \cap W_2 = \{0\}$ then the vector subspace $W_1 + W_2$ is known as the direct sum.
+\end{definition}
+
+Case B: $W_1 \cap W_2 \neq \{0\}$
+
+\[ \text{dim}_F\l(W_1 +W_2 \r) = \text{dim}_F\l( W_1 \r) + \text{dim}_F\l(W_2 \r) - \text{dim}_F\l( W_1\cap W_2\r) \]
+
+\begin{proof}
+	Start with basis of $W_1\cap W_2$, $\b_\circ = \{u_1,\dots,u_k\}$. Now extend this basis to a basis of $W_1$, $\b_1 = \{u_1,\dots,u_k,w_1,\dots,w_l\}$ and similarly for $W_2$, $\b_2 = \{u_1,\dots,u_k,w_1`,\dots,w_m\}$
+	\[\b = \b_1 \cup \b_2 \]
+	\[\b =  \{u_1,\dots,u_k,w_1,\dots,w_l,w_1`,\dots,w_m`\}\]
+	As any element in $W_1 + W_2$ can be represented by a linear combination of elements of $\b$, $\b$ spans $W_1+W_2$. To show that $\b$ is linearly independent,
+	\[ c_1 u_1 + \dots + c_k u_k + d_1 w_1 + \dots + d_l w_l + \g_1 w_1` + \dots + \g_m w_m` = 0 \]
+	\[ => c_1 u_1 + \dots + c_k u_k + d_1 w_1 + \dots + d_l w_l = - \g_1 w_1` - \dots - \g_m w_m` = v \] 
+	Clearly $v\in W_1$ and $v\in W_2$, therefore $v \in W_1 \cap W_2$, therefore $v$ can be written as,
+	\[ v = c_1` u_1 + \dots + c_k` u_k \]
+	\[ => c_1 u_1 + \dots + c_k u_k + d_1 w_1 + \dots + d_l w_l = - \g_1 w_1` - \dots - \g_m w_m` = v = c_1` u_1 + \dots + c_k` u_k \]
+	From these 2 equations, we are able to determine that $\b$ is linearly independent,\\
+	We have,
+	\[ - \g_1 w_1` - \dots - \g_m w_m`  = c_1` u_1 + \dots + c_k` u_k \]
+	$\{u_1,\dots,u_k,w_1`,\dots,w_m`\}$ is a linear independent set, therefore,
+	\[  \g_1 = \dots = w_m`  = c_1` = \dots = c_k` = 0 \]
+	Similarly, we have,
+	\[ c_1 u_1 + \dots + c_k u_k + d_1 w_1 + \dots + d_l w_l = c_1` u_1 + \dots + c_k` u_k \]
+	We know $c_1` = \dots = c_k` = 0$, therefore,
+	\[ c_1 u_1 + \dots + c_k u_k + d_1 w_1 + \dots + d_l w_l = 0 \]
+	$\{u_1,\dots,u_k,w_1,\dots,w_l\}$ is a linear independent set, therefore,
+	\[  \g_1 = \dots = w_m`  = c_1 = \dots = c_l = 0 \]
+	Therefore the only solution for
+	\[ c_1 u_1 + \dots + c_k u_k + d_1 w_1 + \dots + d_l w_l + \g_1 w_1` + \dots + \g_m w_m` = 0 \]
+	is all the scalars being equal to zero, which implies linear independence of $\b$. Therefore $\b$ is both linearly independent and spans $W_1+W_2$, which makes it a basis for $W_1+W_2$.
+	\[ \text{dim}_F\l( W_1 \r) = |\b_1| = k + l \]
+	\[ \text{dim}_F\l( W_2 \r) = |\b_1| = k + m \]
+	\[ \text{dim}_F\l( W_1 + W_2 \r) = |\b| = k + l + m \]
+	\[ \text{dim}_F\l( W_1 \cap W_2 \r) = |\b_\circ| = k  \]
+	\[ \therefore\text{dim}_F\l(W_1 +W_2 \r) = \text{dim}_F\l( W_1 \r) + \text{dim}_F\l(W_2 \r) - \text{dim}_F\l( W_1\cap W_2\r) \]
+\end{proof}
+
+\begin{proposition}
+	If $V$ is the direct sum, $W_1+W_2$ then $v\in V$ can be uniquely expressed as $w_1+w_2$ where $w_1\in W_1$ and $w_2\in W_2$.
+\end{proposition}
+
+\begin{proof}
+	Let, $v = w_1 + w_2 = w_1` + w_2`$ then, $w_1 - w_1` = w_2 - w_2` = x$. therefore $x\in W_1 \cap W_2$ and by definition of direct sum, $x \in \{0\}$, therefore $x=0$. Which gives us, $w_1 = w_1`$ and $w_2=w_2`$.
+\end{proof}
+
+\section{Quotient Spaces}
+
+\subsection{Quotient Spaces}
+
+Goal is to create a new vector space out of $W\subseteq V$, define an equvalence relation $\sim _W$ on $V$. $v_1 \sim_W v_2$ if and only if $v_1-v_2\in W$
+
+\begin{itemize}
+	\item \textit{Reflexive}
+		Yes, if $0\in W$.
+	\item \textit{Symmetric}
+		Yes, if whenever, $v_1-v_2\in W$ implies $v_2-v_1\in W$, ie, $-\l(v_1-v_2\r)\in W$.
+	\item \textit{transitivity}
+		Yes, if whenever $v_1-v_2\in W$ and $v_2-v_3\in W$ implies $v_1-v_3 = \l(v_1-v_2\r) + \l(v_2-v_3\r) \in W$.
+\end{itemize}
+
+Starting with any arbitary subset of $V$ we end with a subspace of $V$ due to the conditions that needs to be satisfied for $\sim_W$ to be an equivalence relation.\\
+
+For any eqivalence relation $\sim$ on an arbitary set $S$, an equivalence class is given by.
+
+\[ \l[s\r] = \{s`:s`\in S, s` \sim s \} \]
+
+Equivalence relations are disjoined and partition the set. that is either $\l[s\r]\cap\l[s`\r]=\es$ or $\l[s\r]=\l[s`\r]$.\\
+
+For $\sim_W$,
+
+\[ \l[v\r] = \{ v_1:v_1-v\in W\} \]
+\[ \l[v\r] = \{ v_1=v+w : w\in W\} \]
+\[ \l[v\r] = v+W\]
+
+$\l[v_1\r] = \l[v_2\r]$ we translate via $W$,
+
+\[ v_1+W = v_2+W \] 
+\[ v_1 = v_2 + W\]
+\[ v_1 -v_2 = w\in W\]
+
+Therefore $\l[v_1\r] =\l[v_2\r]$ if and only if $ v_1 -v_2 \in W$.\\
+
+We can create a new vector space, where each element is an equivalence class of the equivalence relation $\sim_W$. Consider the set of all equivalence class of the relation $\sim_W$, $V/W$.\\
+
+Addition under the vector space $V/W$,
+
+\[ +: V/W \times V/W \rightarrow V/W \]
+
+\[ \l[v_1\r] + \l[v_2\r] = \l[v_1+v_2\r]  \]
+
+Scaling,
+
+\[ \times : F \times V/W \rightarrow V/W \]
+
+\[ \l(\g,\l[v\r]\r) \rightarrow \l[\g v\r] \]
+
+\section{Linear Maps}
+
+\subsection{Linear Maps}
+
+Given vector spaces $V$, $W$ (over the same field $F$) and linear map $T$.
+
+\[ T: V \rightarrow W \]
+
+$T$ should be compatible with the structures of the vector spaces $\forall v_1,v_2,v\in V$ and $\forall \g \in F$.
+
+\begin{itemize}
+	\item $T\l(v_1+v_2\r)=Tv_1+Tv_2$
+	\item $T\l(\g v\r)=\g Tv$
+\end{itemize}
+
+\begin{example}[Scaling Linear Map]
+	\[ T:\R\rightarrow\R,x\rightarrow\g_\circ x\]
+	\[ T\l(x+y\r) = \g_\circ\l(x+y\r) = \g_\circ x + \g_\circ y = Tx + Ty \]
+	\[ T\l(\g y\r)= \g_\circ\l(\g y\r)= \g\l(\g_\circ y\r)=\g\l(Tx\r) \]
+\end{example}
+
+\begin{remark}
+	$T\l(0_v\r) = 0_w$
+\end{remark}
+
+\begin{example}[Dilation]
+	\[ T:V \rightarrow V,v\rightarrow 2v \l(=v+v\r)\]
+	\[ \g v \rightarrow 2 \l(\g v\r) = \g\l(2v\r) = \g\l(Tv\r) \]
+	If in the field, $2=0$ then the map is the zero map, if not then it's a bijective map.
+\end{example}
+
+\begin{example}[Identity map]
+	\[ I:V \rightarrow V, v\rightarrow v\]
+\end{example}
+
+\begin{example}[Trivial map]
+	\[ T_0:V\rightarrow W, v \rightarrow 0_w \]
+\end{example}
+
+\begin{example}[Matrices]
+	\[ A \in M_{n\times n}\l(\R\r) \]
+	\[ L_A: \R^n \rightarrow \R^n \]
+	\[ \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} 
+	   \rightarrow A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}\]
+	\[ L_A\l(\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} + \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix} \r) = L_A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} + L_A \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix} \]
+	\[ L_A \l(\g\begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \r)\rightarrow \g L_A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}\]
+\end{example}
+
+\begin{example}[Reflection]
+	\[ T:\R^2 \rightarrow \R^2,\l(x,y\r)\rightarrow\l(x,-y\r) \]
+	This is for reflection across x-axis, for any other reflection the line as to pass through the origin because $0$ has to be mapped to 0 and in general $T.T$ gives us the identity map.
+\end{example}
+
+\begin{example}[Rotation]
+	\[ T:\R^2\rightarrow\R^2,\l(x,y\r)\rightarrow \l(-y,x\r) \]
+	This is rotaion of $\pi /2$ clockwise, for a more general rotaion,
+	\[ T_\theta : \R^2 \rightarrow \R^2 \]
+	\[ \begin{pmatrix} x\\y\end{pmatrix} \rightarrow
+	   \begin{pmatrix} \text{cos }\theta &-\text{sin }\theta\\
+	   \text{sin }\theta & \text{cos }\theta \end{pmatrix} 
+	   \begin{pmatrix} x\\y\end{pmatrix}\]
+	\[ ||T\l(x,y\r)|| =||\l(x,y\r)|| \]
+	This is a property of every rotation linear map.
+\end{example}
+
+\begin{example}[Projection]
+	\[ P:\R^2\rightarrow\R^2,\l(x,y\r)\rightarrow\l(x,0\r)\]
+	\[ Q:\R^2\rightarrow\R^2,\l(x,y\r)\rightarrow\l(x-y,0\r)\]
+	\[ P^2 = P.P = P \]
+	\[ Q^2 = Q.Q = Q \]
+	This is the defining property of a projection map.
+\end{example}
+
+\begin{example}[Inclusion]
+	\[ T:\R^2\rightarrow\R^3,\l(x,y\r)\rightarrow\l(x,y,0\r)\]
+	\[ T`:\R^2\rightarrow\R^3,\l(x,y\r)\rightarrow\l(x,y,ax+by\r)\]
+\end{example}
+
+\subsection{Null Space}
+
+\begin{definition}[Null Space]
+	Given $T:V\rightarrow W $, null space $N\l(T\r)$ is given by,
+	\[ N\l(T\r) = \{ v \in V: T\l(v\r) = 0_w \} \]
+\end{definition}
+
+\begin{example}[Scaling Linear Map]
+	\[ T:\R\rightarrow\R,x\rightarrow\g_\circ x\]
+	\[ N\l(T\r) = \{ 0\} \]
+\end{example}
+
+\begin{example}[Dilation]
+	\[ T:V \rightarrow V,v\rightarrow 2v \l(=v+v\r)\]
+	\[ N\l(T\r) = \begin{matrix} V & 2 = 0 \text{ in } F \\ \{ 0 \} & 2 \neq 0 \text{ in } F \end{matrix} \]
+\end{example}
+
+\begin{example}[Identity map]
+	\[ I:V \rightarrow V, v\rightarrow v\]
+	\[ N\l(T\r) = \{ 0 \} \]
+\end{example}
+
+\begin{example}[Trivial map]
+	\[ T_0:V\rightarrow W, v \rightarrow 0_w \]
+	\[ N\l(T\r) = V \]
+\end{example}
+
+\begin{example}[Reflection]
+	\[ T:\R^2 \rightarrow \R^2,\l(x,y\r)\rightarrow\l(x,-y\r) \]
+	\[ N\l(T\r) = \{0\} \]
+\end{example}
+
+\begin{example}[Rotation]
+	\[ T_\theta : \R^2 \rightarrow \R^2 \]
+	\[ \begin{pmatrix} x\\y\end{pmatrix} \rightarrow
+	   \begin{pmatrix} \text{cos }\theta &-\text{sin }\theta\\
+	   \text{sin }\theta & \text{cos }\theta \end{pmatrix} 
+	   \begin{pmatrix} x\\y\end{pmatrix}\]
+	\[ N\l(T\r) = \{0\} \]
+\end{example}
+
+\begin{example}[Projection]
+	\[ P:\R^2\rightarrow\R^2,\l(x,y\r)\rightarrow\l(x,0\r)\]
+	\[ N\l(P\r) = \{\l(0,y\r)\} \]
+	\[ Q:\R^2\rightarrow\R^2,\l(x,y\r)\rightarrow\l(x-y,0\r)\]
+	\[ N\l(Q\r) = \{\l(x,y\r):x=y\} \]
+\end{example}
+
+\begin{example}[Inclusion]
+	\[ T:\R^2\rightarrow\R^3,\l(x,y\r)\rightarrow\l(x,y,0\r)\]
+	\[ N\l(T\r) = \{0\} \]
+	\[ T`:\R^2\rightarrow\R^3,\l(x,y\r)\rightarrow\l(x,y,ax+by\r)\]
+	\[ N\l(T\r) = \{0\} \]
+\end{example}
+
+\subsection{Range}
+
+\begin{definition}[Range]
+	Given $T:V\rightarrow W $, null space $R\l(T\r)$ is given by,
+	\[ R\l(T\r) = \text{Image of $V$ under $T$} \] 
+\end{definition}
+
+\begin{example}[Scaling Linear Map]
+	\[ T:\R\rightarrow\R,x\rightarrow\g_\circ x\]
+	\[ R\l(T\r) = \R \]
+\end{example}
+
+\begin{example}[Dilation]
+	\[ T:V \rightarrow V,v\rightarrow 2v \l(=v+v\r)\]
+	\[ R\l(T\r) = \begin{matrix} \{0\} & 2 = 0 \text{ in } F \\ V & 2 \neq 0 \text{ in } F \end{matrix} \]
+\end{example}
+
+\begin{example}[Identity map]
+	\[ I:V \rightarrow V, v\rightarrow v\]
+	\[ R\l(T\r) = V \]
+\end{example}
+
+\begin{example}[Trivial map]
+	\[ T_0:V\rightarrow W, v \rightarrow 0_w \]
+	\[ R\l(T\r) = \{0\} \]
+\end{example}
+
+\begin{example}[Reflection]
+	\[ T:\R^2 \rightarrow \R^2,\l(x,y\r)\rightarrow\l(x,-y\r) \]
+	\[ R\l(T\r) = \R^2\]
+\end{example}
+
+\begin{example}[Rotation]
+	\[ T_\theta : \R^2 \rightarrow \R^2 \]
+	\[ \begin{pmatrix} x\\y\end{pmatrix} \rightarrow
+	   \begin{pmatrix} \text{cos }\theta &-\text{sin }\theta\\
+	   \text{sin }\theta & \text{cos }\theta \end{pmatrix} 
+	   \begin{pmatrix} x\\y\end{pmatrix}\]
+	\[ R\l(T\r) = \R^2 \]
+\end{example}
+
+\begin{example}[Projection]
+	\[ P:\R^2\rightarrow\R^2,\l(x,y\r)\rightarrow\l(x,0\r)\]
+	\[ R\l(P\r) = \{\l(x,0\r)\} \]
+	\[ Q:\R^2\rightarrow\R^2,\l(x,y\r)\rightarrow\l(x-y,0\r)\]
+	\[ R\l(Q\r) = \{\l(x,0\r)\} \]
+\end{example}
+
+\begin{example}[Inclusion]
+	\[ T:\R^2\rightarrow\R^3,\l(x,y\r)\rightarrow\l(x,y,0\r)\]
+	\[ N\l(T\r) = \{\l(x,y,0\r)\} \]
+	\[ T`:\R^2\rightarrow\R^3,\l(x,y\r)\rightarrow\l(x,y,ax+by\r)\]
+	\[ N\l(T\r) = \{\l(x,y,ax+by\r)\} \]
+\end{example}
+
+\subsection{Null space and Range as vector subspaces}
+
+\[ v_1,v_2\in N\l(T\r),\g\in F \]
+
+\[ T\l(v_1+v_2\r) = Tv_1 + Tv_2 \]
+
+\[ T\l(v_1+v_2\r) = 0 + 0 = 0 \]
+
+\[ \therefore v_1+v_2 \in N\l(T\r)  \]
+
+\[ T\l(\g v_1\r) = \g Tv_1 = \g 0 = 0 \]
+
+\[ \therefore \g v_1 \in N\l(T\r) \]
+
+Therefore $ N\l(T\r)$ is a subspace.
+
+
+
+
+\end{document}
