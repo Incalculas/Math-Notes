@@ -1027,4 +1027,85 @@ We now define $\l[T\r]_\b^\a$ to be the matrix associated with the map $S_\a \cd
 	\[ \l[D\r]^\a_\b = \begin{pmatrix} 0&0&1\\0&1&0\\0&0&0\end{pmatrix} \]
 \end{example}
 
+To associate a matrix to a linear map,
+
+\[ T: V \rightarrow W \]
+
+\[ w \l( \in W \r) = \sum_{i=1}^n = \g_i w_i \]
+
+$\l[ T \r]_\b^\a$ is the matrix obtaining by evaulting $T$ on $V$ with basis $\b$ with respect to $\a$.
+
+\[ \l(\l[ T \r]_\b^\a\r)_{ij} = \g_{ij} \]
+
+Where,
+
+\[ Tv_J = \g_{1j} w_1 + \dots + \g_{ij} w_i +\dots + \g_{nj} w_n \]
+
+\[ \l[Tv\r]^\a = \l[Tv\r]^\a_\b \l[v\r]^\b \]
+
+\begin{convention}
+	$\l[a\r]^b$ represents a vector $a$ represented as a linear combination of elements of the set $\b$, where $\b$ is a basis for a vector space with $a$ in it.
+\end{convention}
+
+$\b = \{ v_1,\dots,v_m\}$, represents ordered basis of $V$ and $\a = \{ w_1,\dots,w_n\}$, represents ordered basis of $W$. 
+
+The j$^\text{th}$ column of $\l[T\r]^\a_\b$ is given by the coefficients obtained by expanding $T\l(v_j\r)$ in terms of $\a$
+
+\begin{convention}
+	Just $\l[a\r]^b$ will be used instead of $\l[a\r]^b_b$
+\end{convention}
+
+\begin{example}
+	\[ I: V\rightarrow V, v \rightarrow v \] 
+	Given dim$_FV=n$,
+	\[ \l[I\r]_\b^\b = I_n \]
+\end{example}
+
+\begin{example}
+	\[ R_\theta : \R^2 \rightarrow \R^2 \]
+	Rotation anti clock-wise by $\theta$,
+	\[ \begin{pmatrix}x\\y\end{pmatrix} \rightarrow 
+		\begin{pmatrix} cos\theta & -sin\theta \\ sin\theta & cos\theta \end{pmatrix}
+		\begin{pmatrix}x\\y\end{pmatrix}   \]
+
+	\[ \b = \{\l(1,0\r),\l(0,1\r)\} \]
+	\[ \g = \{\l(1,1\r),\l(1,-1\r)\} \]
+	\[ \l[R_\theta\r]_\b = \begin{pmatrix} cos\theta & -sin\theta \\ sin\theta & cos\theta \end{pmatrix} \]
+	\[ \l[R_\theta\r]_\b^\g = \l[I_2\r]^\g_\b \l[R_\theta\r]_\b^\b  \]
+	\[ \l[R_\theta\r]_\b^\g = \begin{pmatrix}1&1\\1&-1\end{pmatrix}\begin{pmatrix} cos\theta & -sin\theta \\ sin\theta & cos\theta \end{pmatrix} \]
+	\[ \l[R_\theta\r]_\b^\g = \begin{pmatrix} cos\theta + sin\theta & -sin\theta + cos\theta\\ cos\theta - sin\theta & -sin\theta - cos\theta \end{pmatrix} \]
+	\[ \l[R_\theta\r]_\g = \begin{pmatrix} cos\theta & sin\theta \\ sin\theta & cos\theta \end{pmatrix} \]
+\end{example}
+
+\begin{remark}
+	Sum of diagonal elements of $\l[R_\theta\r]_\g$ and $\l[R_\theta\r]_\b$ are the same, and so is the determinant of both matrices. 
+\end{remark}
+
+\begin{example}
+	\[ D:P_n\l(\R\r) \rightarrow P_n\l(\R\r), P\l(x\r) \rightarrow P`\l(x\r) \]
+	\[ \b = \{1,x,\dots,x^n\} \]
+	\[ \l[D\r]_\b  = \begin{pmatrix} 
+	   0 & 1 & 0 & 0 & \cdots & 0\\
+	   0 & 0 & 2 & 0 & \cdots & 0\\
+	   0 & 0 & 0 & 3 & \cdots & 0\\
+	   0 & 0 & 0 & 0 & \ddots & \vdots\\
+	   \vdots & \vdots & \vdots & \vdots &  & n\\
+	   0 & 0 & 0 & 0 & \cdots & 0\\
+	   \end{pmatrix}\]  
+We could look at  $P_n\l(\R\r) \rightarrow P_{n-1}\l(\R\r)$ but let's stick to square matrices for now, and $P_{n-1}\l(\R\r)$ is clearly a subspace of $P_n\l(\R\r)$. \\
+
+We can see that the sum of diagonal elements is clearly 0 and the determinant is 0 as well.
+
+\end{example}
+
+\begin{proposition}
+	Given dim$_FV=m$ and dim$_FW=n$.
+	\[ \Phi: \L\l(V,W\r) \rightarrow M_{n\times m}\l(F\r), T\rightarrow \l[T\r]_\b^\g   \]
+	$\Phi$ is isomorphic.
+\end{proposition}
+
+	\begin{remark}
+		This statement says that the matrix representation of linear maps between 2 finite dimensional vector spaces is "equivalent" (i.e: isomorphic) to the linear map itself.
+	\end{remark}
+
 \end{document}
