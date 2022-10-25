@@ -830,6 +830,11 @@ Therefore $ R\l(T\r)$ is a subspace.
 	Therefore, $T$ is surjective implies injectivity as well.
 \end{proof}
 
+\begin{remark}
+	As part of the above proof, we also proved that Null space being zero implies injectivity.
+\end{remark}
+
+
 \section{Isomorphism, Matrices and Linear maps as vector spaces}
 
 \subsection{Linear Isomorphism}
@@ -906,7 +911,7 @@ Properties of isomorphic linear maps (we will take $T:V\rightarrow W$ as our iso
 					\[ w = T\l(\g_1v_1\r)+\dots+T\l(\g_nv_n\r)\]
 					\[ w = \g_1 Tv_1 + \dots + \g_n Tv_n \]
 					\[ w = \g_1 w_1 +\dots+ \g_n w_n \]
-					Since we choose an arbitart $w$, $\{w_1,dots,w_n\}$ spans the set $W$.
+					Since we choose an arbitart $w$, $\{w_1,\dots,w_n\}$ spans the set $W$.
 				\end{proof}
 		\end{itemize}
 \end{enumerate}
@@ -964,7 +969,9 @@ Properties of isomorphic linear maps (we will take $T:V\rightarrow W$ as our iso
 
 \subsection{Matrix Representation}
 
-Goal is to create a matrix to represent $T:V\rightarrow W$, let $\b=\{v_1,\dots,v_m\}$ be an ordered basis of $V$, let $\a=\{w_1,\dots,w_n\}$ be an ordered basis of $W$.
+Goal is to create a matrix to represent $T:V\rightarrow W$, let $\b=\{v_1,\dots,v_m\}$ be an ordered basis of $V$, let $\a=\{w_1,\dots,w_n\}$ be an ordered basis of $W$.\\
+
+It will be assumed you know basics of matrices, although everything will be revisted later in the notes with formal definitions.
 
 \[ Tv_j = \sum_{i=1}^n \g_{ij}w_i \]
 
@@ -1099,13 +1106,44 @@ We can see that the sum of diagonal elements is clearly 0 and the determinant is
 \end{example}
 
 \begin{proposition}
-	Given dim$_FV=m$ and dim$_FW=n$.
+	Given dim$_FV=m$ and dim$_FW=n$ and given $\b = \{v_1,\dots,v_m\}$ a basis of $V$ and $\g = \{w_1,\dots,w_m\}$ a basis of $W$.
 	\[ \Phi: \L\l(V,W\r) \rightarrow M_{n\times m}\l(F\r), T\rightarrow \l[T\r]_\b^\g   \]
-	$\Phi$ is isomorphic.
+	$\Phi$ is an isomorphism.
 \end{proposition}
 
-	\begin{remark}
-		This statement says that the matrix representation of linear maps between 2 finite dimensional vector spaces is "equivalent" (i.e: isomorphic) to the linear map itself.
-	\end{remark}
+\begin{remark}
+	This statement says that the matrix representation of linear maps between 2 finite dimensional vector spaces is "equivalent" (i.e: isomorphic) to the linear map itself.
+\end{remark}
+
+\begin{proof}
+	Is $\l[S+T\r]_\b^\g =  \l[S\r]_\b^\g + \l[T\r]_\b^\g$
+	J$^\text{th}$column of $\l[S+T\r]_\b^\g =$ coefficient of $\l(S+T\r)v_j$\\ 
+	J$^\text{th}$column of $\l[S\r]_\b^\g =$ coefficient of $Sv_j$\\ 
+	J$^\text{th}$column of $\l[T\r]_\b^\g =$ coefficient of $Tv_j$\\ 
+	\[ \therefore \l[S+T\r]_\b^\g = \l[S\r]_\b^\g + \l[T\r]_\b^\g \]
+	
+	Is $\l[\lambda T\r]_\b^\g =  \lambda \l[T\r]_\b^\g$.\\
+	J$^\text{th}$column of $\l[\lambda T\r]_\b^\g =$ coefficient of $\lambda Tv_j$ = $\lambda$  coefficient of $Tv_j$ = j$^\text{th}$ coefficient of $\lambda\l[T\r]_\b^\g$.\\
+	Therefore $\Phi$ is a linear map.
+
+	Zero in $M_{n\times m}\l(F\r)$ is the zero matrix.\\
+	\[ \forall v \in V, \l[v\r]^\g \times 0_{n\times m} = \l[0\r]^\b \]
+	Therefore the only preimage of $0_{n\times m}$ is the zero map between $V$ and $W$, therefore the null space of $\Phi$ is $\{0\}$, now we know that $\Phi$ is injective.\\
+	Given a matrix $A\in M_{n\times m}$, define $T_A:V\rightarrow W,\l[v\r]_\b \rightarrow \l[v\r]_\b A $, where$ \l[v\r]_\b A$ (a $1\times n$ matrix) represents a vector $w$ as a linear sum of the vectors in basis $\g$. $T_A$ is a well defined linear map from $V \rightarrow W$ (proof of this is trivial but skipped here), therefore $T_A\in \L\l(V,W\r)$ is a preimage for $A\in M_{n\times m}$. Therefore $\Phi$ is bijective and hence an isomorphism.
+	\end{proof}
+
+\begin{remark}
+	This also proves conjecture 6.8
+\end{remark}
+
+\section{Dual spaces and Dual maps}
+
+\subsection{Dual Spaces}
+
+\begin{definition}[Dual Space]
+	Given a finite dimensional vector space $V$ over field $F$, dual space is given by $V^* = \L\l(V,F\r)$, called as dual of V. 
+\end{definition}
+
+\[ \text{dim}_F V^* = \text{dim}_F M_{1\times n}\l(F\r) = n = \text{dim}_F V \]
 
 \end{document}
