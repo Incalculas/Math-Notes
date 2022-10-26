@@ -67,7 +67,7 @@ Key properties of a vector space:
 		\[ \exists 0 \in V \]
 		\[ \text{ s.t } v + 0 = v, \forall v \in V \]
 	\item \textit{iv) Inverse}
-		\[ \forall v \in V, \exists v` \in V \]
+		\[ \text{given } v \in V, \exists v` \in V \]
 		\[ \text{s.t } v + v` = 0 \]
 \end{itemize}
 
@@ -158,7 +158,7 @@ $u, v, w \in V$ and $a, b \in F$
 	As $+$ is closed $1+1 = 2 \in F$ and $2+1=3 \in F$ and so on. 
 	By inverse property of $+$, we know $-1,-2,-3 \dots\in F$, therefore $\Z\in F$. 
 	By inverse property of $\times$, we know $\{1/a: a\in\Z\}\in F$.
-	Since $\times$ is closed, $S=\{a/b: a,b \in\Z\}\in F$, set $S$ is just $\Z$. Therefore $Z\in F$ if $F \subset\R$ is a field.
+	Since $\times$ is closed, $S=\{a/b: a,b \in\Z\}\in F$, set $S$ is just $\Q$. Therefore $Z\in F$ if $F \subset\R$ is a field.
 	
 \end{proof}
 
@@ -1116,7 +1116,7 @@ We can see that the sum of diagonal elements is clearly 0 and the determinant is
 \end{remark}
 
 \begin{proof}
-	Is $\l[S+T\r]_\b^\g =  \l[S\r]_\b^\g + \l[T\r]_\b^\g$
+	Is $\l[S+T\r]_\b^\g =  \l[S\r]_\b^\g + \l[T\r]_\b^\g$\\
 	J$^\text{th}$column of $\l[S+T\r]_\b^\g =$ coefficient of $\l(S+T\r)v_j$\\ 
 	J$^\text{th}$column of $\l[S\r]_\b^\g =$ coefficient of $Sv_j$\\ 
 	J$^\text{th}$column of $\l[T\r]_\b^\g =$ coefficient of $Tv_j$\\ 
@@ -1145,5 +1145,45 @@ We can see that the sum of diagonal elements is clearly 0 and the determinant is
 \end{definition}
 
 \[ \text{dim}_F V^* = \text{dim}_F M_{1\times n}\l(F\r) = n = \text{dim}_F V \]
+
+There is no natural linear isomorphism between $V$ and $V^*$.
+
+\begin{quote}
+	"There cannot be a cannonical or God-given isomorphism"
+\end{quote}
+
+We can take dual of a dual, known as double dual.
+
+\begin{quote}
+	"In a sense, double duals are more well behaved"
+\end{quote}
+
+\subsection{Dual basis}
+
+let $\b = \{v_1,\dots,v_n\}$ be a basis of $V$.
+
+\[ v_i^*: V\rightarrow F, a_1v_1+\dots + a_nv_n\rightarrow a_i \]
+
+\[ v_i^*v_j = \delta_{ij} \]
+
+$\{v_1^*,\dots,v_n^*\}$ is a basis of $V^*$.
+
+\begin{proof}
+	Given $T \in V^*, T: V\rightarrow F$ and $v\in V$, where $\b = \{v_1,\dots,v_n\}$ is a basis of $V$,
+	\[ Tv = T\l(a_1v_1,\dots,a_nv_n\r) \]
+	\[ Tv = a_1Tv_1 + \dots + a_nTv_n \]
+	\[ Tv = Tv_1a_1 + \dots + Tv_na_n \]
+	\[ Tv = Tv_1v_1^*v + \dots + Tv_nv_n^*v \]
+	\[ Tv = \l(Tv_1v_1^* + \dots + Tv_nv_n^*\r)v \]
+	\[ T = Tv_1v_1^* + \dots + Tv_nv_n^* \]
+	$Tv_i$'s are fixed scalars, therefore the set $\b^*\{v^*_1,\dots,v^*_n\}$ spans $V^*$, linear independence follows from the fact that dim$_FV^*=n$ 
+
+\end{proof}
+
+examples for dual spaces to be added later 
+
+\subsection{Dual Maps}
+
+
 
 \end{document}
