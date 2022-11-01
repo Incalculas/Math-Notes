@@ -1180,10 +1180,28 @@ $\{v_1^*,\dots,v_n^*\}$ is a basis of $V^*$.
 
 \end{proof}
 
-examples for dual spaces to be added later 
+\begin{example}
+	For fixed $v\in \R^n$,
+	\[ L_v:\R^n \rightarrow \R, w \rightarrow v\cdot w = \sum_{i=1}^n v_iw_i \]
+	From properties of dot product, it follows that $L_v$ is a linear map, hence $L_v \in \l(\R^n\r)^*$
+\end{example}
+
+\begin{example}
+	\[ T_\text{tr}: M_n\l(\R\r), A \rightarrow \text{tr}\l(A\r) \]
+	Since trace of a matrix is a linear map, $T_\text{tr}\in \l(M_n\l(\R\r)\r)^*$.
+\end{example}
 
 \subsection{Dual Maps}
 
+\begin{definition}[Dual Map]
+	Given a linear map $T:V\rightarrow W$, Dual map $T^*$ of $T$ is given by,
+	\[T^*:W^*\rightarrow V^*, L \rightarrow L\cdot T \]
+\end{definition}
 
+\begin{example}
+	\[ T_\g : \R \rightarrow \R, x \rightarrow \g x \]
+	\[ T_\g^* : \R^* \rightarrow \R^*, \l(L:\R \rightarrow \R,x \rightarrow Lx\r) \rightarrow \l(\g L : \R \rightarrow \R, x \rightarrow \g Lx \r) \]
+	We know dimension of $\R^*$ to be 1, and the identity map is not equal to the zero map, therefore it is a basis for $\R^*$
+\end{example}
 
 \end{document}
