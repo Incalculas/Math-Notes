@@ -1,0 +1,225 @@
+\documentclass[11pt,a4paper]{colorart}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{latexsym}
+\usepackage{amsfonts,amssymb}
+\usepackage{psfrag}
+\usepackage{ulem}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage{import, pdfpages, transparent}
+\usepackage{caption, subcaption}
+\usepackage[section]{placeins}
+\usepackage{hyperref}
+
+\def\nn{\nonumber} 
+\def\pa{{\partial}}
+\def\f{\frac}
+\def\l{\left}
+\def\r{\right}
+\def\d{{\rm d}}
+\def\es{\emptyset}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+\def\N{\mathbb{N}}
+\def\Z{\mathbb{Z}}
+\def\Q{\mathbb{Q}}
+\def\e{\epsilon}
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\p{\phi}
+\def\Ker{\text{Ker}}
+\def\Con{\text{Con}}
+\def\L{\mathcal{L}}
+\def\ra{\rightarrow}
+
+\title{\huge Analysis 2}
+\author{Incalculas}
+\date{Updated on: \today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Differentiation}
+
+\subsection{Definition}
+
+\begin{definition}[Differentiation]
+	Let $J$ be an interval in $\R$ with $c\in J$ and let $f:J\ra \R$ be a function from $J$ to $\R$.
+	The function is said to be differentiable at $c$ if 
+	
+	\[ \lim_{ x \to c } \frac{ f(x) - f(x) }{ x - c } \]
+	
+	exists.
+
+\end{definition}
+
+\begin{notation}[Differentiation]
+	If $f$ is differentiable at $c$, we define 
+	
+	\[ \lim_{ x \to c } \frac{ f(x) - f(x) }{ x - c } 
+	   = \frac{ df }{ dx } \biggr|_{ x=c } = f'(c) \]
+\end{notation}
+
+Let's now discuss about interpretation of differentiation\\
+
+Let $J$ be an interval in $R$ with $c\in J$ and let $f:J\ra \R$ be a function.\\
+
+Aim is to find an approximation for $f$ near 0, $f(x) \approx a + bx$ for some $a,b \in \R$ near 0.
+
+\[ \lim_{x \to c} \l[ f(x) - (a+bx) \r] = 0 \]
+
+\[ E(x) = f(x) - (a+bx) \]
+
+Find $a,b \in \R$ such that,
+
+\[ \lim_{x \to c} E(x) = 0 \]
+
+Then, $a=f(c)$ and $b=f'(c)$, this tells us  that we know first order approximation from differentiation. 
+
+\begin{definition}[Alternate definition for differentiation]
+	Let $J$ be an interval in $\R$ with $c \in J$ and let $f:J \ra \R$, we say $f$ is differentiable if and only if 
+	\[ \lim_{h \to 0} \frac{ f(c+h) - f(c) }{ h } \]
+	exists.
+\end{definition}
+
+\begin{remark}
+	Take $J = [a,b]$ then
+	\begin{itemize}
+		\item $c=a$, we only check for one sided limit (right hand limit)
+		\item $a<c<b$, we check both left hand and right hand limits
+		\item $c=b$, we only check for one sided limit (left hand limit)
+	\end{itemize}
+\end{remark}
+
+\begin{definition}[Differentiable on an interval]
+	Let $J$ be an interval on $R$ and $f:J \ra \R$ be real function on $J$, we say $f$ is differentiable on $J$ if $f$ is differentiable for every point on $J$.
+\end{definition}
+
+\begin{example}
+	$f(x) = x$, 
+	\[ f'(x) = \lim_{h \to 0} \frac{ (x+h) - (x) }{ h} 
+	   = \lim_{h \to 0} 1 = 1 \implies f'(x) = 1 \]
+\end{example}
+
+\subsection{Equivalent condition for differentiation}
+
+\begin{theorem}[Equivalent condition for differentiation]
+	Let $J$ be an interval in $\R$ with $c \in J$ and let $f:J \ra \R$ then $f$ is differentiable at $c$ if and only if $\exists f_1:J \ra \R$ such that
+	\begin{itemize}
+		\item \textit{i)} $f(x) = f(c) + f_1(x) + (x-c) \forall x in J$.
+		\item \textit{ii)} $f_1$ is continous at $c$.
+	\end{itemize}
+	and $f_1(c) = f'(c)$
+\end{theorem}
+
+\begin{proof}
+	Let $f$ be differentiable at $c$ then
+	
+	\[ \lim_{ x \to c } \frac{ f(x) - f(c) }{ x - c} = f'(c) \]
+	
+	Now define, 
+
+	\[ f_1(x) = \l\{ 
+		\begin{array}{ll}
+			\frac{ f(x) - f(c) }{ x -c } & x \neq c\\ 
+	   		f'(c) & x=c 
+		\end{array} 
+		     \r. \]
+	This now proves i) and ii).\\
+
+	Assume that $f_1$ exists and satisfies i) and ii) then,
+	
+	\[ f_1(x) = \frac{ f(x) - f(c) }{ x-c }, x \neq c \]
+	
+	and since $f_1(x)$ is continous at $c$ 
+	
+	\[ \lim_{x \to c} f_1(x) \]
+	
+	exists and therefore,
+	
+	\[ f_1(x) = \lim_{ x \to c } f_1(x) = \lim_{x \to c} \frac{ f(x) - f(c) }{ x-c } \]
+
+	This proves that $f$ is differentiable at $c$ and $f'(c) = f_1(c)$.
+\end{proof}
+
+\begin{example}
+	Define $f: \R \ra \R, x \ra x^n$ for some fixed $n \in \N$, for $c \in \R$, $f'(c) = nc^{n-1}$.
+\end{example}
+
+\begin{proof}
+	
+	\[ f(x) - f(c) = x^n - c^n \]
+	
+	\[ f(x) - f(c) = ( x-c ) ( x^{n-1} + c x^{n-2} + c^2 x^{n-3} + \dots + c^{n-1} ) \]
+
+	Let $f_1(x) = x^{n-1} + c x^{n-2} + c^2 x^{n-3} + \dots + c^{n-1}$, given it's a polynomial, we know $f_1(x)$ is continous in $\R$.
+
+	\[ f_1(c) = nc^n-1 \]
+
+	Therefore $f$ is differentiable in $\R$ and $f'(x) = nx^{n-1}$.
+
+\end{proof}
+
+\begin{example}
+	Define $f: \R \ra \R, x \ra e^x$, for $c \in \R$, $f'(c) = e^c$.
+\end{example}
+	
+\begin{proof}
+	
+	\[ f(x) - f(c) = e^x - e^c \]
+
+	\[ f(x) - f(c) = e^c \l( e^x - 1 \r) \]
+
+	Since, 
+	
+	\[ e^x -1 = \sum_{n=1}^{\infty} \frac{ x^n }{ n! } = x \sum_{n=1}^{\infty} \frac{ x^{n-1} }{ n! } \]
+
+	Define,
+
+	\[ f_1(x) = e^c \sum_{n=1}^{\infty} \frac{ (x-c)^{n-1} }{ n! } \]
+
+	Assume that $f_1$ is continous at $c$,
+
+	\[ f_1(c) = e^c \]
+
+	This proves that $f$ is differentiable at $c$ and $f'(c) = e^c$.\\
+
+	(Note: this proof uses power series of exponential function which uses differentiation, this proof is just a circular argument and we will get back to an actual proof at the end of the course)
+
+\end{proof}
+
+\begin{example}
+	Define $f: \R \ra \R, x \ra |x|$, for $c \in \R$, $f'(c) = 1$ if $c>0$, $f'(c) = -1$ if $x<0$ and $f'(c)$ does not exist for $c=0$.
+\end{example}
+
+\begin{proof}
+	Both $c<0$ and $c>0$ cases are trivial. Now assume $f(x)$ is differentiable at 0 then the following limit exists.
+	
+	\[ \lim_{ h \to 0 } \frac{ |0+h| -|0| }{ h } = |h|/h \]
+	
+	Clearly, left hand limit is $-1$ and right hand limit is $1$ and therefore limit does not exist.
+
+\end{proof}
+	
+\begin{theorem}[Algebraic properties]
+	Let $J$ be an interval in $\R$ and let $f:J \ra \R$ and $g:J \ra \R$ be 2 differentiable functions, then for $c \in J$.
+	\begin{itemize}
+		\item \textit{i)} $(f+g)'(c) = f'(c) + g'(c)$
+		\item \textit{ii)} for $\a \in \R$, $(\a f)'(c) = \a f'(c)$
+		\item \textit{iii)} $(fg)'(c)$ exists
+		\item \textit{iv)}
+	\end{itemize}
+\end{theorem}
+
+\end{document}
