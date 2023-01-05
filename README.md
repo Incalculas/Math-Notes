@@ -7,18 +7,15 @@ A list will be updated here when a course is completed and the correspodning not
 
 Courses I am done with:
 
-Analysis - 1
-Linear algebra - 1
+Analysis-1, Linear algebra - 1
 
 Courses I am currently doing:
 
-Analysis - 2
-Probability - 1
+Analysis-2, Probability-1
 
 Courses for which notes will be uploaded here: 
 
-Analysis - 2
-Linear algebra - 1
+Analysis-2, Linear algebra-1
 
 Courses for which notes here are fully updated:
 
