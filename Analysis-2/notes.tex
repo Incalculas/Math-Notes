@@ -23,13 +23,15 @@
 \def\f{\frac}
 \def\l{\left}
 \def\r{\right}
-\def\d{{\rm d}}
+\def\d{{\delta}}
 \def\es{\emptyset}
 \def\R{\mathbb{R}}
 \def\C{\mathbb{C}}
 \def\N{\mathbb{N}}
 \def\Z{\mathbb{Z}}
 \def\Q{\mathbb{Q}}
+\def\F{\mathbb{F}}
+\def\D{\mathfrak{D}}
 \def\e{\epsilon}
 \def\a{\alpha}
 \def\b{\beta}
@@ -58,7 +60,7 @@
 	Let $J$ be an interval in $\R$ with $c\in J$ and let $f:J\ra \R$ be a function from $J$ to $\R$.
 	The function is said to be differentiable at $c$ if 
 	
-	\[ \lim_{ x \to c } \frac{ f(x) - f(x) }{ x - c } \]
+	\[ \lim_{ x \to c } \frac{ f(x) - f(c) }{ x - c } \]
 	
 	exists.
 
@@ -117,7 +119,7 @@ Then, $a=f(c)$ and $b=f'(c)$, this tells us  that we know first order approximat
 \begin{theorem}[Equivalent condition for differentiation]
 	Let $J$ be an interval in $\R$ with $c \in J$ and let $f:J \ra \R$ then $f$ is differentiable at $c$ if and only if $\exists f_1:J \ra \R$ such that
 	\begin{itemize}
-		\item \textit{i)} $f(x) = f(c) + f_1(x) + (x-c) \forall x in J$.
+		\item \textit{i)} $f(x) = f(c) + f_1(x)  (x-c) \forall x in J$.
 		\item \textit{ii)} $f_1$ is continous at $c$.
 	\end{itemize}
 	and $f_1(c) = f'(c)$
@@ -153,6 +155,16 @@ Then, $a=f(c)$ and $b=f'(c)$, this tells us  that we know first order approximat
 	This proves that $f$ is differentiable at $c$ and $f'(c) = f_1(c)$.
 \end{proof}
 
+\begin{corollary}
+	Let $f:J\ra\R$ be function from interval $J\in\R$ to $\R$ be differential at $c\in J$ then $f$ is continous at $c$.
+\end{corollary}
+
+\begin{proof}
+	From Theorem 1.7,
+	\[ f(x) = f(c) + f_1(x)  (x-c) \]
+	$f_1$ is contious at $c$ and hence $f$ is differentiable at $c$
+\end{proof}
+
 \begin{example}
 	Define $f: \R \ra \R, x \ra x^n$ for some fixed $n \in \N$, for $c \in \R$, $f'(c) = nc^{n-1}$.
 \end{example}
@@ -161,11 +173,11 @@ Then, $a=f(c)$ and $b=f'(c)$, this tells us  that we know first order approximat
 	
 	\[ f(x) - f(c) = x^n - c^n \]
 	
-	\[ f(x) - f(c) = ( x-c ) ( x^{n-1} + c x^{n-2} + c^2 x^{n-3} + \dots + c^{n-1} ) \]
+	\[ \implies f(x) - f(c) = ( x-c ) ( x^{n-1} + c x^{n-2} + c^2 x^{n-3} + \dots + c^{n-1} ) \]
 
 	Let $f_1(x) = x^{n-1} + c x^{n-2} + c^2 x^{n-3} + \dots + c^{n-1}$, given it's a polynomial, we know $f_1(x)$ is continous in $\R$.
 
-	\[ f_1(c) = nc^n-1 \]
+	\[ f_1(c) = nc^{n-1} \]
 
 	Therefore $f$ is differentiable in $\R$ and $f'(x) = nx^{n-1}$.
 
@@ -179,7 +191,7 @@ Then, $a=f(c)$ and $b=f'(c)$, this tells us  that we know first order approximat
 	
 	\[ f(x) - f(c) = e^x - e^c \]
 
-	\[ f(x) - f(c) = e^c \l( e^x - 1 \r) \]
+	\[ \implies f(x) - f(c) = e^c \l( e^x - 1 \r) \]
 
 	Since, 
 	
@@ -211,15 +223,195 @@ Then, $a=f(c)$ and $b=f'(c)$, this tells us  that we know first order approximat
 	Clearly, left hand limit is $-1$ and right hand limit is $1$ and therefore limit does not exist.
 
 \end{proof}
-	
+
 \begin{theorem}[Algebraic properties]
-	Let $J$ be an interval in $\R$ and let $f:J \ra \R$ and $g:J \ra \R$ be 2 differentiable functions, then for $c \in J$.
+	Let $J$ be an interval in $\R$ and let $f:J \ra \R$ and $g:J \ra \R$ be 2 functions differentaible at $c\in J$.
 	\begin{itemize}
-		\item \textit{i)} $(f+g)'(c) = f'(c) + g'(c)$
-		\item \textit{ii)} for $\a \in \R$, $(\a f)'(c) = \a f'(c)$
-		\item \textit{iii)} $(fg)'(c)$ exists
-		\item \textit{iv)}
+		\item \textit{i)} $(f+g)$ definied as 
+			\[ (f+g)(x) = f(x) + g(x) \] 
+			Then,
+			\[ (f+g)'(c) = f'(x) + g'(x) \]
+		\item \textit{ii)} for $\a \in \R$, $(\a f)$ definied as 
+			\[ (\a f)(x)=\a f(x) \]
+			Then,
+			\[ (\a f)'(c)=\a f'(x) \]
+		\item \textit{iii)} $(fg)$ definied as 
+			\[ (fg)(x)=f(x)g(x)\] 
+			Then,
+			\[ (fg)'(c)=f'(c)g(c)+f(c)g'(c) \]
+		\item \textit{iv)} Assume $f(c)\neq 0$, $(\frac{1}{f})$ definied as 
+			\[ \l(\frac{1}{f}\r)(x) = \frac{1}{f(x)} \]
+			Then,
+			\[ \l(\frac{1}{f}\r)'(c) = -\frac{f'(c)}{(f(c))^2} \]
 	\end{itemize}
 \end{theorem}
+
+\begin{proof}
+	For \textit{i)} :\\
+	From theorem 1.7 we have that there exists continous functions $f_1:J\ra\R$ and $g_1:J\ra\R$ such that,
+	\[ f(x) = f(c) + f_1(x)  (x-c) \]
+	\[ g(x) = g(c) + g_1(x)  (x-c) \]
+	From these equations we have,
+	\[ f(x) + g(x) = f(c) + g(c) + f_1(x)  (x-c) + g_1(x) (x-c) \]
+	\[ \implies (f+g)(x) = (f+g)(c) +  ( f_1(x)  + g_1(x) ) (x-c) \]
+	\[ \implies (f+g)(x) = (f+g)(c) +  ((f_1+g_1)(x)) (x-c) \]
+	Now applying theorem 1.7, we have that
+	\[ (f+g)'(c) = (f_1+g_1)(c) = f_1(c) + g_1(c) = f'(c) + g'(c) \]
+	\[ \implies (f+g)'(c) = f'(c) + g'(c) \]
+	We shall apply the same structure for the proofs of other algebraic properties,\\
+	For \textit{ii)} :\\
+	From theorem 1.7 we have,
+	\[ f(x) = f(c) + f_1(x)  (x-c) \]
+	From this equation we have,
+	\[ \a f(x) = \a f(c) + \a f_1(x)  (x-c) \]
+	\[ \implies (\a f)(x) = (\a f)(c) + ( (\a f_1)(x) ) (x-c) \]
+	Now applying theorem 1.7, we have that
+	\[ (\a f)'(c) = (\a f_1)(c) = \a f_1(c) = \a f'(c) \]
+	\[ \implies (\a f)'(c) = \a f'(c) \]
+
+	For \textit{iii)} :\\
+	From theorem 1.7 we have,
+	\[ f(x) = f(c) + f_1(x)  (x-c) \]
+	\[ g(x) = g(c) + g_1(x)  (x-c) \]
+	From these equations we have,
+	\[ f(x)g(x) = f(c)g(c) + (x-c) \l[ f(c)g_1(x) + f_1(x)g(c) + f_1(x)g_1(x)(x-c) \r] \]
+	Now applying theorem 1.7,
+	\[ (fg)'(c) = f(c)g_1(c) + f_1(c)g(c) \]
+	\[ \implies (fg)'(c) = f(c)g'(c) + f'(c)g(c) \]
+
+	For \textit{iv)} :\\
+	From theorem 1.7 we have,
+	\[ f(x) = f(c) + f_1(x)  (x-c) \]
+	\[ \implies \frac{1}{f(x)} - \frac{1}{f(c)} = \frac{1}{f(c)+f_1(x)(x-c)} -\frac{1}{f(c)} \]
+	\[ \implies \frac{1}{f(x)} - \frac{1}{f(c)} =  \frac{f(c)-f(c)-f_1(x)(x-c)}{(f(c))(f(c)+f_1(x)(x-c))}\]
+	\[ \frac{1}{f(x)} = \frac{1}{f(c)} -  \frac{-f_1(x)(x-c)}{(f(c))(f(c)+f_1(x)(x-c))}\]
+	\[ \implies \l(\frac{1}{f}\r)(x) = \l(\frac{1}{f}\r)(c) -  \frac{-f_1(x)(x-c)}{(f(c))(f(c)+f_1(x)(x-c))}\]
+	\[ \implies \l(\frac{1}{f}\r)(x) = \l(\frac{1}{f}\r)(c) -  (x-c)\frac{-f_1(x)}{(f(c))(f(c)+f_1(x)(x-c))}\]
+	Now applying theorem 1.7,
+	\[ \l(\frac{1}{f}\r)'(c) = -  \frac{f_1(c)}{(f(c))(f(c)+f_1(c)(c-c))} \]
+	\[ \implies \l(\frac{1}{f}\r)'(c) = -  \frac{f_1(c)}{(f(c))^2} \]
+	\[ \implies \l(\frac{1}{f}\r)'(c) = -  \frac{f'(c)}{(f(c))^2} \]
+\end{proof}
+
+\subsection{Differentiation as a linear map}
+
+Let $J \in \R$ be an interval and let $c\in J$,
+
+We define vector space $\D_c$ as,
+
+\[ \D_c = \{ f:J\ra\R : \text{$f$ is differentiable at $c$} \} \]
+
+$\D_c$ is a vector space over $\R$,
+
+Let's define,
+
+\[ \frac{d}{dx} \biggr|_{ x=c } : \D_c \ra \R, \frac{df}{dx} \biggr|_{ x=c } = f'(c) \]
+
+It is trivial to check that, $\frac{d}{dx} \biggr|_{ x=c }$ is a linear map from the vector space $\D_c$ to itself.
+
+\[ \D = \{ f:j \ra \R : \text{$f$ is differential on $J$} \} \] 
+
+\[ \mathfrak{F} = \{ f:J \ra \R \} \]
+
+\[ \frac{d}{dx} : \D \ra \mathfrak{F} , f \ra \frac{df}{dx}  \]
+
+It is again trivial to check that, $\frac{d}{dx}$ is a linear map from the vector space $\D$ to itself.
+
+\begin{notation}[Continous functions]
+	Given interval $J$ in $\R$
+	\[ \mathcal{C}(J) = \{ f:J \ra \R : \text{$f$ is continous on $J$} \}  \]
+\end{notation}
+
+\begin{notation}[Continously differentiable functions]
+	Given interval $J$ in $\R$
+	\[ \mathcal{C}^1(J) = \{ f:J \ra \R : \text{$f$ is differentiable on $J$ and $f' \in \mathcal{C}(J)$ } \}  \]
+\end{notation}
+
+\subsection{Chain Rule}
+
+\begin{theorem}[Chain Rule]
+	Given intervals $J$ and $J_1$ in $\R$ and functions $f:J\ra \R$ and $g:J_1 \ra \R$, such that $f(J) \subseteq J_1$. 
+	Let $c\in J$, if $f$ is differentiable at $c$ and $g$ is differentiable at $f(c)$ then $(gof)$ is differentiable at $c$ and $(gof)'(c)$ is given by
+	\[ (gof)'(c) = g'(f(c))f'(c) \]
+\end{theorem}
+
+\begin{proof}
+	From theorem 1.7 we have that there exists $f_1:J\ra\R$ such that,
+	\[ f(x) = f(c) + f_1(x)  (x-c) \forall x \in J\]
+	where $f_1$ is continous at $c$ and $f'(c)=f_1(c)$\\
+	From theorem 1.7 we have that there exists $g_1:J_1\ra\R$ such that,
+	\[ g(y) = g(f(c)) + g_1(y)  (y-f(c)) \forall y \in J_1 \]
+	where $g_1$ is continous at $f(c)$ and $g'(f(c))=g_1(f(c))$\\
+	Now,
+	\[ (gof)(x) = g(f(x)) \]
+	\[ \implies (gof)(x) = g(f(c)) + g_1(f(x)) ( f(x) - f(c) ) \]
+	\[ \implies (gof)(x) = g(f(c)) + g_1(f(c)+f_1(x)(x-c))f_1(x)(x-c) \]
+	Since $g_1$ and $f_1$ are continous, $g_1(f(c)+f_1(x)(x-c))f_1(x)$ is contious, therefore we can apply theorem 1.7 now and we get, 
+	\[ (gof)_1(x) = g_1(f(c)+f_1(x)(x-c))f_1(x) \]
+	\[ (gof)'(c) = (gof)_1(c) = g_1(f(c)+f_1(c)(c-c))f_1(c) \]
+	\[ (gof)'(c) = g'(f(c))f'(c) \]
+
+\end{proof}
+
+We shall now declare few conjectures to give ourselves oppertunity to look at better examples (just going along with how the course was thought, I the student do not like this),
+
+\begin{conjecture}
+	$f(x)=e^x$ is differentiable in $\R$ and $f'(x) = e^x$
+\end{conjecture}
+
+\begin{conjecture}
+	$f(x)=\text{log}(x)$ is differentiable in $\R$ and $f'(x) = 1/x$
+\end{conjecture}
+
+\begin{conjecture}
+	$f(x)=\text{sin}(x)$ is differentiable in $\R$ and $f'(x) = \text{cos}(x)$
+\end{conjecture}
+
+\begin{conjecture}
+	$f(x)=\text{cos}(x)$ is differentiable in $\R$ and $f'(x) = -\text{sin}(x)$
+\end{conjecture}
+
+\begin{example}
+	(This example uses one of the cojectures)
+	\[ f(x) = x^\a, x > 0, \a\in\R \]
+	Then,
+	\[ f(x) = e^{\a\text{log}(x)} \]
+	let, $q(x) = \a \text{log}(x)$ and $p(x) = e^x$, therefore,
+	\[ f(x) = (poq)(x) \]
+	Now using chain rule we get,
+	\[ f'(x) = p'(q(x))q'(x) \]
+	\[ \implies f'(x) = e^{\a\text{log}(x)} \frac{\a}{x} \]
+	\[ \implies f'(x) = \a x^{\a-1} \]
+\end{example}
+
+\subsection{Local minima and maxima}
+
+\begin{definition}[Local Minima]
+	Let $f:J\ra\R$ be a given real valued function from an interval in $\R$, we say that $c\in J$ is a local minima of $f$ if $\exists \d \in \R$ such that,
+	\begin{itemize}
+		\item \textit{i)} \[ (c-\d,c+\d) \subseteq J \]
+		\item \textit{ii)} \[ f(x) \geq f(c) \forall x \in (c-\d,c+\d) \]
+	\end{itemize}
+\end{definition}
+
+\begin{definition}[Local Maxima]
+	Let $f:J\ra\R$ be a given real valued function from an interval in $\R$, we say that $c\in J$ is a local maxima of $f$ if $\exists \d \in \R$ such that,
+	\begin{itemize}
+		\item \textit{i)} \[ (c-\d,c+\d) \subseteq J \]
+		\item \textit{ii)} \[ f(x) \leq f(c) \forall x \in (c-\d,c+\d) \]
+	\end{itemize}
+\end{definition}
+
+\begin{definition}[Global Minima]
+	Let $f:J\ra\R$ be a given real valued function from an interval in $\R$, we say that $c\in J$ is a global minima of $f$ if,
+	\[ f(x) \geq f(c) \forall x \in J \]
+\end{definition}
+
+\begin{definition}[Global Maxima]
+	Let $f:J\ra\R$ be a given real valued function from an interval in $\R$, we say that $c\in J$ is a global maxima of $f$ if,
+	\[ f(x) \leq f(c) \forall x \in J \]
+\end{definition}
+
+
 
 \end{document}
