@@ -119,7 +119,7 @@ Then, $a=f(c)$ and $b=f'(c)$, this tells us  that we know first order approximat
 \begin{theorem}[Equivalent condition for differentiation]
 	Let $J$ be an interval in $\R$ with $c \in J$ and let $f:J \ra \R$ then $f$ is differentiable at $c$ if and only if $\exists f_1:J \ra \R$ such that
 	\begin{itemize}
-		\item \textit{i)} $f(x) = f(c) + f_1(x)  (x-c) \forall x in J$.
+		\item \textit{i)} $f(x) = f(c) + f_1(x)  (x-c) \forall x \in J$.
 		\item \textit{ii)} $f_1$ is continous at $c$.
 	\end{itemize}
 	and $f_1(c) = f'(c)$
@@ -412,6 +412,142 @@ We shall now declare few conjectures to give ourselves oppertunity to look at be
 	\[ f(x) \leq f(c) \forall x \in J \]
 \end{definition}
 
+\begin{example}
+	$f:[-1,1]\ra\R, f(x) = x^2$, 0 is local and global minima.
+\end{example}
+
+\begin{example}
+	$f:[0,1]\ra\R, f(x)=x$, 0 is global but not local minuma.
+\end{example}
+
+\begin{theorem}
+	For $J$ interval in $\R$, let $f:J\ra\R$ and let $c$ be a local minima, if $f$ is differentiable at $c$ then $f'(c)=0$.
+\end{theorem}
+
+\begin{proof}
+	Since $c$ is a local minima of $f$, there exists $\d >0$ such that,
+	\[ (c-\d,c+\d) \subset J \]
+	and
+	\[ f(c+h) \geq f(c), 0<h<\d \]
+	since $f$ is differentiable at $c$ we can write,
+	\[ f'(c) =  \lim_{ h \to 0 } \frac{ f(c+h) - f(c) }{ h } \]
+	For the above limit, the left hand limit is $\leq 0$ and right hand limit is $\geq 0$ but since $f$ is differentiable, both must be equal and hence must be equal to zero.
+\end{proof}
+
+\begin{theorem}
+	For $J$ interval in $\R$, let $f:J\ra\R$ and let $c$ be a local maxima, if $f$ is differentiable at $c$ then $f'(c)=0$.
+\end{theorem}
+
+\begin{proof}
+	The theorem trivially follows fromt the previous theorem.
+\end{proof}
+
+We shall see a more generalized form of these theorems later on which includes point of inflection after we prove Taylor's theorem.
+
+\subsection{Rolle's theorem}
+
+\begin{theorem}[Rolle's theorem]
+	For $a,b \in \R$, let $f:[a,b] \ra \R$ be such that,
+	\begin{itemize}
+		\item $f$ is continous in $[a,b]$.
+		\item $f$ is differentiable in $(a,b)$.
+		\item $f(a)=f(b)$.
+	\end{itemize}
+	Then $\exists c \in (a,b)$ such that, $f'(c) = 0$.
+\end{theorem}
+
+\begin{proof}
+	Since $f$ is continous and $[a,b]$ is a compact set in $\R$, $f$ will map $[a,b]$ to a compact set in $\R$ and hence $\exists x_1,x_2 \in [a,b]$ such that,
+	\[ f(x_1) \leq f(x) \leq f(x_2) \forall x \in [a,b] \]
+
+	\begin{itemize}
+		\item \textit{Case 1:} $f(x_1) = f(x_2) $\\
+			$f$ is a constant function and hence $f'(x) = 0 \forall x \in [a,b]$.
+		\item \textit{Case 2:} $f(x_1) \leq f(x_2)$\\
+			We can claim that, $\{x_1,x_2\} \neq \{a,b\}$ since $f(x_1)\neq f(x_2)$. This now proves that there exists a local minima or local maxima which now completes the proof.
+	\end{itemize}
+\end{proof}
+
+\subsection{Mean value theorem}
+
+\begin{theorem}[Mean value theorem]
+	For $a,b \in \R$, let $f:[a,b] \ra \R$ be such that,
+	\begin{itemize}
+		\item $f$ is continous in $[a,b]$.
+		\item $f$ is differentiable in $(a,b)$.
+	\end{itemize}
+	Then $\exists c \in (a,b)$ such that,
+	\[ f'(c) = \frac{ f(a) - f(b) }{ b-a } \]
+\end{theorem}
+
+\begin{proof}
+	Define $g:[a,b]\ra\R$,
+	\[ g(x) = f(x) - f(a) - \l( \frac{ x-a }{ b-a } \r) ( f(b) - f(a) ) \]
+	By algebraic properties of continous real functions, we know $g$ is continous in $[a,b]$ and by algebraic properties of differentiation, we also know that $g$ is differentiable in $(a,b)$. Now by applying Rolle's theorem to $g$, $\exists c \in (a,b)$ such that
+	\[ g'(c) = 0 \]
+	\[ \implies  f'(c) - \frac{ f(b)-f(a) }{ b-a } = 0 \]
+	\[ \implies f'(c) = \frac{ f(b)-f(a) }{ b-a } \]
+\end{proof}
+
+\begin{example}[costant function]
+	Let $J$ be an interval in $\R$ and let $f:J\ra\R$ be differentiable on $J$ and assume $f'(x)=0 \forall x \in J$, then $f$ is a constant function.
+\end{example}
+
+\begin{proof}
+	for $x,y\in J$ by mean value theorem, $f(x)-f(y)=f'(c)(x-y)$, for some $c\in J$ and since $f'=0$, $f(x) = f(y) \forall x,y \in J$.
+\end{proof}
+
+\begin{example}[non decreasing function]
+	Let $J$ be an interval in $\R$ and let $f:J\ra\R$ be differentiable on $J$ and assume $f'(x)>0 \forall x \in J$, then $f$ is a non decreasing function.
+\end{example}
+
+\begin{proof}
+	for $x,y\in J$ by mean value theorem, $f(x)-f(y)=f'(c)(x-y)$, for some $c\in J$ and since $f'>0$, $f(x) \geq f(y) \forall x,y \in J$ with $x\geq y$.
+\end{proof}
+
+\begin{definition}[Lipschitz functions]
+	For $J$ interval in $\R$, let $f:J\ra\R$. $f$ is said to be lipshcitz if $\exists M>0$ such that, $|f(x)-f(y)|\leq M|x-y|$.
+\end{definition}
+
+By definition, it is clear that lipshitz functions are uniformly continous.
+
+\begin{theorem}
+	For $J$ interval in $\R$, let $f:J\ra\R$, if 
+	\begin{itemize}
+		\item \textit{I)} $f:J\ra\R$ is differentiable.
+		\item \textit{II)} $f':J\ra\R$ is bounded.
+	\end{itemize}
+	Then $f$ is lipschitz.
+\end{theorem}
+
+\begin{proof}
+	Let $x,y\in J$, assume $x<y$ now applying mean value theorem on the closed interval $[x,y]$ we get that $\exists c \in (x,y)$ such that,
+	\[ f(x) - f(y) = f'(c)(x-y) \]
+	and now since $f'$ is bounded, there exists $M>0$ such that,
+	\[ |f'(c)| \leq M \forall c \in J \]
+	From this we have,
+	\[ f(x) - f(y) \leq M|x-y| \forall x,y \in J \]
+\end{proof}
+
+\begin{example}
+	$f(x) = \sqrt{x}, x \in [0,1]$, $f'(x) = x^{-1/2}/2$, $f'$ is bounded for the given domain and hence is lipschitz.
+\end{example}
+
+\begin{definition}[Continously differentiable]
+	For $J$ interval in $\R$, let $f:J\ra\R$ be differentiable function, $f$ is said to be continously differentiable if $f':J \ra \R$ is a continous function.
+\end{definition}
+
+\subsection{Inverse value theorem}
+
+\begin{theorem}
+	For $J$ interval in $\R$, let $f:J\ra\R$, if $f$ is continously differentiable on $J$ and assuming $f'(x) \neq 0 \forall x \in J$ then the following hold
+	\begin{itemize}
+		\item \textit{I)} $f$ is strictly monotone.
+		\item \textit{II)} $f(J)$ is an interval.
+		\item \textit{III)} $f$ has an inverse $g$.
+		\item \textit{IV)} $g$ is differentiable.
+	\end{itemize}
+\end{theorem}
 
 
 \end{document}
