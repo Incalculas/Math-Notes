@@ -97,11 +97,11 @@ Then, $a=f(c)$ and $b=f'(c)$, this tells us  that we know first order approximat
 
 \begin{remark}
 	Take $J = [a,b]$ then
-	\begin{itemize}
+	\begin{enumerate}
 		\item $c=a$, we only check for one sided limit (right hand limit)
 		\item $a<c<b$, we check both left hand and right hand limits
 		\item $c=b$, we only check for one sided limit (left hand limit)
-	\end{itemize}
+	\end{enumerate}
 \end{remark}
 
 \begin{definition}[Differentiable on an interval]
@@ -118,10 +118,10 @@ Then, $a=f(c)$ and $b=f'(c)$, this tells us  that we know first order approximat
 
 \begin{theorem}[Equivalent condition for differentiation]
 	Let $J$ be an interval in $\R$ with $c \in J$ and let $f:J \ra \R$ then $f$ is differentiable at $c$ if and only if $\exists f_1:J \ra \R$ such that
-	\begin{itemize}
-		\item \textit{i)} $f(x) = f(c) + f_1(x)  (x-c) \forall x \in J$.
-		\item \textit{ii)} $f_1$ is continous at $c$.
-	\end{itemize}
+	\begin{enumerate}
+		\item $f(x) = f(c) + f_1(x)  (x-c) \forall x \in J$.
+		\item $f_1$ is continous at $c$.
+	\end{enumerate}
 	and $f_1(c) = f'(c)$
 \end{theorem}
 
@@ -226,24 +226,24 @@ Then, $a=f(c)$ and $b=f'(c)$, this tells us  that we know first order approximat
 
 \begin{theorem}[Algebraic properties]
 	Let $J$ be an interval in $\R$ and let $f:J \ra \R$ and $g:J \ra \R$ be 2 functions differentaible at $c\in J$.
-	\begin{itemize}
-		\item \textit{i)} $(f+g)$ definied as 
+	\begin{enumerate}
+		\item $(f+g)$ definied as 
 			\[ (f+g)(x) = f(x) + g(x) \] 
 			Then,
 			\[ (f+g)'(c) = f'(x) + g'(x) \]
-		\item \textit{ii)} for $\a \in \R$, $(\a f)$ definied as 
+		\item for $\a \in \R$, $(\a f)$ definied as 
 			\[ (\a f)(x)=\a f(x) \]
 			Then,
 			\[ (\a f)'(c)=\a f'(x) \]
-		\item \textit{iii)} $(fg)$ definied as 
+		\item $(fg)$ definied as 
 			\[ (fg)(x)=f(x)g(x)\] 
 			Then,
 			\[ (fg)'(c)=f'(c)g(c)+f(c)g'(c) \]
-		\item \textit{iv)} Assume $f(c)\neq 0$, $(\frac{1}{f})$ definied as 
+		\item Assume $f(c)\neq 0$, $(\frac{1}{f})$ definied as 
 			\[ \l(\frac{1}{f}\r)(x) = \frac{1}{f(x)} \]
 			Then,
 			\[ \l(\frac{1}{f}\r)'(c) = -\frac{f'(c)}{(f(c))^2} \]
-	\end{itemize}
+	\end{enumerate}
 \end{theorem}
 
 \begin{proof}
@@ -388,18 +388,18 @@ We shall now declare few conjectures to give ourselves oppertunity to look at be
 
 \begin{definition}[Local Minima]
 	Let $f:J\ra\R$ be a given real valued function from an interval in $\R$, we say that $c\in J$ is a local minima of $f$ if $\exists \d \in \R$ such that,
-	\begin{itemize}
-		\item \textit{i)} \[ (c-\d,c+\d) \subseteq J \]
-		\item \textit{ii)} \[ f(x) \geq f(c) \forall x \in (c-\d,c+\d) \]
-	\end{itemize}
+	\begin{enumerate}
+		\item \[ (c-\d,c+\d) \subseteq J \]
+		\item \[ f(x) \geq f(c) \forall x \in (c-\d,c+\d) \]
+	\end{enumerate}
 \end{definition}
 
 \begin{definition}[Local Maxima]
 	Let $f:J\ra\R$ be a given real valued function from an interval in $\R$, we say that $c\in J$ is a local maxima of $f$ if $\exists \d \in \R$ such that,
-	\begin{itemize}
-		\item \textit{i)} \[ (c-\d,c+\d) \subseteq J \]
-		\item \textit{ii)} \[ f(x) \leq f(c) \forall x \in (c-\d,c+\d) \]
-	\end{itemize}
+	\begin{enumerate}
+		\item \[ (c-\d,c+\d) \subseteq J \]
+		\item \[ f(x) \leq f(c) \forall x \in (c-\d,c+\d) \]
+	\end{enumerate}
 \end{definition}
 
 \begin{definition}[Global Minima]
@@ -448,11 +448,11 @@ We shall see a more generalized form of these theorems later on which includes p
 
 \begin{theorem}[Rolle's theorem]
 	For $a,b \in \R$, let $f:[a,b] \ra \R$ be such that,
-	\begin{itemize}
+	\begin{enumerate}
 		\item $f$ is continous in $[a,b]$.
 		\item $f$ is differentiable in $(a,b)$.
 		\item $f(a)=f(b)$.
-	\end{itemize}
+	\end{enumerate}
 	Then $\exists c \in (a,b)$ such that, $f'(c) = 0$.
 \end{theorem}
 
@@ -460,22 +460,22 @@ We shall see a more generalized form of these theorems later on which includes p
 	Since $f$ is continous and $[a,b]$ is a compact set in $\R$, $f$ will map $[a,b]$ to a compact set in $\R$ and hence $\exists x_1,x_2 \in [a,b]$ such that,
 	\[ f(x_1) \leq f(x) \leq f(x_2) \forall x \in [a,b] \]
 
-	\begin{itemize}
+	\begin{enumerate}
 		\item \textit{Case 1:} $f(x_1) = f(x_2) $\\
 			$f$ is a constant function and hence $f'(x) = 0 \forall x \in [a,b]$.
 		\item \textit{Case 2:} $f(x_1) \leq f(x_2)$\\
 			We can claim that, $\{x_1,x_2\} \neq \{a,b\}$ since $f(x_1)\neq f(x_2)$. This now proves that there exists a local minima or local maxima which now completes the proof.
-	\end{itemize}
+	\end{enumerate}
 \end{proof}
 
 \subsection{Mean value theorem}
 
 \begin{theorem}[Mean value theorem]
 	For $a,b \in \R$, let $f:[a,b] \ra \R$ be such that,
-	\begin{itemize}
+	\begin{enumerate}
 		\item $f$ is continous in $[a,b]$.
 		\item $f$ is differentiable in $(a,b)$.
-	\end{itemize}
+	\end{enumerate}
 	Then $\exists c \in (a,b)$ such that,
 	\[ f'(c) = \frac{ f(a) - f(b) }{ b-a } \]
 \end{theorem}
@@ -513,10 +513,10 @@ By definition, it is clear that lipshitz functions are uniformly continous.
 
 \begin{theorem}
 	For $J$ interval in $\R$, let $f:J\ra\R$, if 
-	\begin{itemize}
-		\item \textit{I)} $f:J\ra\R$ is differentiable.
-		\item \textit{II)} $f':J\ra\R$ is bounded.
-	\end{itemize}
+	\begin{enumerate}
+		\item $f:J\ra\R$ is differentiable.
+		\item $f':J\ra\R$ is bounded.
+	\end{enumerate}
 	Then $f$ is lipschitz.
 \end{theorem}
 
@@ -537,17 +537,198 @@ By definition, it is clear that lipshitz functions are uniformly continous.
 	For $J$ interval in $\R$, let $f:J\ra\R$ be differentiable function, $f$ is said to be continously differentiable if $f':J \ra \R$ is a continous function.
 \end{definition}
 
-\subsection{Inverse value theorem}
+\subsection{Inverse function theorem}
 
-\begin{theorem}
+\begin{theorem}[Inverse function theorem]
 	For $J$ interval in $\R$, let $f:J\ra\R$, if $f$ is continously differentiable on $J$ and assuming $f'(x) \neq 0 \forall x \in J$ then the following hold
-	\begin{itemize}
-		\item \textit{I)} $f$ is strictly monotone.
-		\item \textit{II)} $f(J)$ is an interval.
-		\item \textit{III)} $f$ has an inverse $g$.
-		\item \textit{IV)} $g$ is differentiable.
-	\end{itemize}
+	\begin{enumerate}
+		\item $f$ is strictly monotone.
+		\item $f(J)$ is an interval.
+		\item $f$ has an inverse $g$.
+		\item $g$ is differentiable.
+	\end{enumerate}
 \end{theorem}
 
+\begin{proof}
+
+	$f$ is differentiable in $J$ and hence is continous on $J$. Continous images of connected sets are connected and, in $\R$ all connected sets are intervals and all intervals are connected sets hence concludes the proof of II).\\
+
+	If f is not strictly monotone then there exists $x,y,z \in J$ such that $x<y<z$ and, 
+	
+	\[ f(y) \leq \text{min} \{f(x),f(z)\} \text{ or } f(y) \geq \text{max} \{f(x),f(z)\}\]
+	
+	With out loss of generality assume, 
+	
+	\[ f(y) \leq \text{min} \{f(x),f(z)\} \]
+
+	Then either,
+	
+	\[ [ f(y),f(x) ] \subseteq  [ f(y),f(z) ] \]
+	
+	or
+	
+	\[ [ f(y),f(z) ] \subseteq  [ f(y),f(x) ] \]
+	
+	Without loss of generality assume, 
+	
+	\[ [ f(y),f(x) ] \subseteq  [ f(y),f(z) ] \]
+
+	Since $f(x) \in [ f(y),f(z) ]$ by intermediate value theorem we are able to tell that,
+	
+	\[ \exists z_1 \in [y,z] \text{ such that } f(z_1) = f(x) \]
+	
+	and now by mean value theorem we are able to tell that,
+	
+	\[ \exists c \in [x,z_1] \text{ such that,}\]
+	
+	\[ f'(c) = \frac{ f(x) - f(z_1) }{ x-z_1 } = 0 \]
+
+	But this leads to a contradiction that $f$ is such that, $f'(i) \neq 0 \forall i \in J$ and hence our assumption that $f$ is not strictly monotone is wrong.\\
+
+	If $a,b \in J$ such that $a \neq b$ then without loss of generality assume $a<b$ then $f(a) < f(b)$ or $f(b) < f(a)$ and hence $f(a) \neq f(b)$ if $a \neq b$ which makes $f$ an injective mapping and hence,
+	\[ g: f(J) \ra J, f(x) \ra x \]
+	is a valid function and hence inverse of $f$ exists.\\
+	
+	Let $c \in f(j)$, we need to show that
+	
+	\[ \lim_{y \ra c } \frac{ g(y) - g(c) }{ y-c } \]
+	
+	exists to show that $g$ is differentiable.\\
+
+	Let $y_n \ra c$ with $y_n \in f(J)$ therefore there exists sequence $\{x_n\}$ in $J$ such that,
+
+	\[ f(x_n) = y_n \]
+
+	and there exists $d \in J$ such that,
+
+	\[ f(d) = c \]
+
+	Now,
+
+	\[ \frac{ g(y_n) - g(c) }{ y_n - c } = \frac{ g(f(x_n)) - g(f(d)) }{ f(x_n) - f(d) } = \frac{ x_n - d }{ f(x_n) - f(d) } = \frac{1}{\frac{ f(x_n) - f(d) }{ x_n - d }} \]
+	
+	\[ \implies \lim_{n \ra \infty} \frac{ g(y_n) - g(c) }{ y_n - c } = \lim_{n \ra \infty} \frac{1}{\frac{ f(x_n) - f(d) }{ x_n - d }} \]
+	
+	\[ \implies g'(c) = 1/f'(d) = 1/f'(g(c)) \]
+
+	This proves that $g$ the inverse of $f$ is differentiable.
+
+\end{proof}
+
+\subsection{ Cauchy's mean value theorem }
+
+\begin{theorem}[Cauchy's mean value theorem]
+
+	For $a,b \in \R$ let $f,g: [a,b] \ra \R$ be functions both differentiable on $(a,b)$ and if $g(x) \neq 0 \forall x\in [a,b]$ then,
+	\begin{enumerate}
+		\item $g(b) \neq g(a)$
+		\item $\exists c \in (a,b)$ such that
+			\[ \frac{ f(b) - f(a) }{ g(b) - g(a) } = \frac{ f'(c) }{ g'(c) } \]
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+
+	The proof of I) follows from previous theorem now let,
+
+	\[ G(x) = (f(b)-f(a))g(x) - (g(b)-g(a))f(x) \]
+	
+	Now we have,
+
+	\[ G(a) = (f(b)-f(a))g(a) - (g(b)-g(a))f(a) \]
+	
+	\[ \implies G(a) = f(b)g(a) - g(b)f(a) \]
+
+	\[ G(b) = (f(b)-f(a))g(b) - (g(b)-g(a))f(b) \]
+	
+	\[ \implies G(b) = f(b)g(a) - g(b)f(a) \]
+
+	Since $G(a) = G(b)$ we are able to use Rolle's theorem for $f$ hence $\exists c \in (a,b)$ such that,
+
+	\[ G'(c) = 0 \]
+	
+	\[ \implies G'(c) = (f(b)-f(a))g'(c) - (g(b)-g(a))f'(c) \]
+	
+	\[ \implies (f(b)-f(a))g'(c) - (g(b)-g(a))f'(c) = 0 \]
+
+	\[ \implies (f(b)-f(a))g'(c) = (g(b)-g(a))f'(c) \]
+
+	\[ \implies \frac{ f(b) - f(a) }{ g(b) - g(a) } = \frac{ f'(c) }{ g'(c) } \]
+
+\end{proof}
+
+\begin{theorem}[Darboux theorem]
+	Given $a,b \in \R$ let $f:[a,b] \ra \R$ be a differential function and assume that $f'(a) \leq k \leq f'(b)$ then $\exists c \in [a,b]$ such that $f'(c) = k$.
+\end{theorem}
+
+\begin{proof}
+
+	Let, 
+
+	\[ F:[a,b] \ra \R, x \ra f(x) - kx \]
+
+	$F$ is differentiable and hence a continous function and since continous mapping of a compact connected sets are compact and connected, the image of $F$ has a minimum and a maximum.\\
+
+	Since $F$ is differentiable at $a$ we have that given $\e > 0$ $\exists$ $\d >0$ such that,
+
+	\[ \l| \frac{ F(x) - F(a) }{ x - a } - F'(a) \r| < \e \text{, } \forall \text{ } x \in (a,a+\d) \]
+
+	\[ \implies F'(a) - \e < \frac{ F(x) - F(a) }{ x - a } < F'(a) + \e \text{, } \forall \text{ } x \in (a,a+\d) \]
+
+	Since $F'(a) < 0$ we can let $\e = -F'(a)/2$, then there exists $\d_1$ such that
+
+	\[ \frac{ F(x) - F(a) }{ x - a } < \frac{ F'(a) }{ 2 } \text{, } \forall \text{ } x \in (a,a+\d_1) \]
+
+	\[ \implies F(x) - F(a) > x - a > 0 \text{, } \forall \text{ } x \in (a,a+\d_1) \]
+
+	Therefore $a$ is not the point of global maximum for $F$.\\
+	
+	Since $F$ is differentiable at $b$ we have that given $\e > 0$ $\exists$ $\d >0$ such that,
+
+	\[ \l| \frac{ F(x) - F(b) }{ x - b } - F'(b) \r| < \e \text{, } \forall \text{ } x \in (b-\d,b) \]
+
+	\[ \implies F'(b) - \e < \frac{ F(x) - F(b) }{ x - b } < F'(b) + \e \text{, } \forall \text{ } x \in (b-\d,b) \]
+
+	Since $F'(b) > 0$ we can let $\e = F'(b)/2$, then there exists $\d_2$ such that
+
+	\[ \frac{ F'(b) }{ 2 } < \frac{ F(x) - F(b) }{ x - b } \text{, } \forall \text{ } x \in (b-\d,b) \]
+
+	\[ \implies F(x) - F(a) > x - a > 0 \text{, } \forall \text{ } x \in (a,a+\d_1) \]
+
+	Therefore $a$ is not the point of global maximum for $F$.\\
+	
+	Then there must exist a maximum of $F$ in the interior of $F([a,b])$ making it also a local maximum, therefore there exists a point $c \in [a,b]$ such that,
+
+	\[ F'(c) = 0 \]
+
+	\[ \implies f'(c) = k \]
+
+\end{proof}
+
+\subsection{L'Hospital rule}
+
+\begin{theorem}[L'Hospital rule]
+	Suppose $f$ and $g$ are real and differentiable in $(a,b)$ and $g'(x) \neq 0$ for all $x \in (a,b)$ for $a,b \in \R$. Suppose,
+	\[ \frac{ f'(x) }{ g'(x) } \ra A \text{ as } x \ra a \]
+	If, 
+	\[ f(x) \ra 0 \text{ and } g(x) \ra 0 \text{ as } x \ra a \]
+	or if,
+	\[ g(x) \ra \infty \text{ as } x \ra a \]
+	then,
+	\[ \frac{ f(x) }{ g(x) } \ra A \text{ as } x \ra a \]
+\end{theorem}
+
+\begin{proof}
+
+	\textit{ Case 1: $A \neq \pm \infty$} \\
+	Choose a real number $q > A$ and choose another real number $r$ such that $A < q < r$,\\
+	because $\frac{ f'(x) }{ g'(x) } \ra A \text{ as } x \ra a$, $\exists$ $c \in (a,b)$ such that $a < x < c$ and 
+	\[ \frac{ f'(x) }{ g'(x } < r. \]
+	
+	If $a<x<y<c$ then by cauchy's mean value theorem\\
+
+	(to be continued)
+	
+\end{proof}
 
 \end{document}
