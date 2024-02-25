@@ -1,5 +1,4 @@
 # Math-Notes
 
-Analysis-II notes will be stopped as the course directly follows Kumaresan.
+Abandoned as of now, notes are much more detailed than they have to be to serve any purpose.
 
-Linear Algebra-I Notes are currently incomplete and will be completed later on.
