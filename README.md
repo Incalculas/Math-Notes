@@ -1,4 +1,4 @@
 # Math-Notes
 
-Abandoned as of now, notes are much more detailed than they have to be to serve any purpose.
+Abandoned. Books are better than my 2nd year notes.
 
